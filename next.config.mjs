@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+
+  // pg بيحمّل موديولات أصلية — لازم يفضل برّه الباندل بتاع السيرفر
+  serverExternalPackages: ['pg'],
+
   // سوق موبايل-أولاً: الصور AVIF/WebP ومقاسات الموبايل الأول
   images: {
     formats: ['image/avif', 'image/webp'],

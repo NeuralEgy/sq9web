@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start -p 3032",
     "lint": "next lint",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --import tsx --test test/*.test.ts"
   },
   "dependencies": {
     "next": "^15.5.29",
@@ -22,8 +22,10 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.20",
+    "pg-mem": "^3.0.14",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.23.15",
     "typescript": "^5.7.2"
   }
 }

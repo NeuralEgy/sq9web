@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n';
 import { DEVELOPER, LOCATION, whatsappUrl } from '@/data/project';
+import { pathFor } from '@/lib/site';
 import { IconWhatsapp } from './Icons';
 
 const SOCIAL_LABELS: Array<{ key: keyof typeof DEVELOPER.social; label: string }> = [
@@ -10,23 +12,36 @@ const SOCIAL_LABELS: Array<{ key: keyof typeof DEVELOPER.social; label: string }
   { key: 'youtube', label: 'YouTube' },
 ];
 
-export function Footer({ locale, t }: { locale: Locale; t: Dictionary }) {
-  const links = [
-    { href: '#story', label: t.nav.story },
-    { href: '#project', label: t.nav.project },
-    { href: '#units', label: t.nav.units },
-    { href: '#amenities', label: t.nav.amenities },
-    { href: '#location', label: t.nav.location },
-    { href: '#visit', label: t.nav.visit },
+export function Footer({
+  locale,
+  t,
+  base = '',
+}: {
+  locale: Locale;
+  t: Dictionary;
+  base?: string;
+}) {
+  const sectionLinks = [
+    { href: `${base}#story`, label: t.nav.story },
+    { href: `${base}#project`, label: t.nav.project },
+    { href: `${base}#units`, label: t.nav.units },
+    { href: `${base}#location`, label: t.nav.location },
+    { href: `${base}#visit`, label: t.nav.visit },
+  ];
+
+  // صفحات الهبوط — موجودة في الفوتر عشان تتزحف من كل صفحة،
+  // ده أرخص وأهم من أي حاجة SEO تانية: الصفحات اليتيمة ما بتترتبش.
+  const guideLinks = [
+    { href: pathFor(locale, 'hurghadaApartments'), label: t.landing.hurghadaApartments.navLabel },
+    { href: pathFor(locale, 'magawish'), label: t.landing.magawish.navLabel },
+    { href: pathFor(locale, 'offPlan'), label: t.landing.offPlan.navLabel },
   ];
 
   return (
     <footer className="border-t border-sand-200 bg-sand-100 py-14">
-      <div className="container-x grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="container-x grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <p className="text-lg font-bold text-ink-900">
-            {locale === 'ar' ? DEVELOPER.name.ar : DEVELOPER.name.en}
-          </p>
+          <p className="text-lg font-bold text-ink-900">{DEVELOPER.name[locale]}</p>
           <p className="mt-3 max-w-sm leading-relaxed text-ink-700">{t.footer.tagline}</p>
           <p className="mt-4 text-ink-700">{LOCATION.address[locale]}</p>
         </div>
@@ -36,11 +51,26 @@ export function Footer({ locale, t }: { locale: Locale; t: Dictionary }) {
             {t.footer.navTitle}
           </h2>
           <ul className="mt-4 space-y-2">
-            {links.map((link) => (
+            {sectionLinks.map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="text-ink-700 transition hover:text-sea-600">
                   {link.label}
                 </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav aria-label={t.footer.guidesTitle}>
+          <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-900">
+            {t.footer.guidesTitle}
+          </h2>
+          <ul className="mt-4 space-y-2">
+            {guideLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="text-ink-700 transition hover:text-sea-600">
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -105,8 +135,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Dictionary }) {
 
       <div className="container-x mt-12 border-t border-sand-200 pt-6 text-sm text-ink-700">
         <p>
-          © {new Date().getFullYear()}{' '}
-          {locale === 'ar' ? DEVELOPER.name.ar : DEVELOPER.name.en}. {t.footer.rights}
+          © {new Date().getFullYear()} {DEVELOPER.name[locale]}. {t.footer.rights}
         </p>
       </div>
     </footer>

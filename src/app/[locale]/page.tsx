@@ -1,6 +1,9 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { isLocale } from '@/i18n/config';
 import { getDictionary } from '@/i18n';
+import { buildMetadata } from '@/lib/seo';
+import { HomeJsonLd } from '@/components/JsonLd';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Story } from '@/components/Story';
@@ -14,6 +17,23 @@ import { PriceAndVisit } from '@/components/PriceAndVisit';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFab } from '@/components/WhatsAppFab';
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const t = getDictionary(locale);
+
+  return buildMetadata({
+    locale,
+    route: 'home',
+    title: t.seo.homeTitle,
+    description: t.seo.homeDescription,
+  });
+}
+
 // الصفحة الرئيسية — صفحة واحدة طويلة بمراسي، زي موقعهم الحالي.
 // الترتيب مقصود: الزائر الجاي من إعلان بيشوف المشروع والأرقام قبل ما يسيب الصفحة،
 // وسؤال «بكام؟» بيتردّ عليه قبل الفوتر مش بعده.
@@ -25,6 +45,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
+      <HomeJsonLd locale={locale} />
+
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-3 focus:rounded-lg focus:bg-ink-900 focus:px-4 focus:py-2 focus:text-sand-50"

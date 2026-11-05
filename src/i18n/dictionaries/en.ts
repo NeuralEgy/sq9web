@@ -1,6 +1,12 @@
 // النصوص الإنجليزية — نفس شكل القاموس العربي بالظبط.
 // النبرة مأخوذة من موقعهم الحالي: جُمل قصيرة، community / family / home.
 const en = {
+  seo: {
+    homeTitle: 'Apartments for Sale in Hurghada — Aurora Palace, Magawish | Square9',
+    homeDescription:
+      'Aurora Palace: 140 residences in Magawish, Hurghada — studios, one and two bedrooms from 54 to 142 m². Fully finished, delivered 2028, 10% down. Book a visit to the show apartment.',
+  },
+
   nav: {
     story: 'Who We Are',
     project: 'The Project',
@@ -220,6 +226,7 @@ const en = {
   footer: {
     tagline: 'We build communities in Hurghada where people live together, not merely side by side.',
     navTitle: 'Sections',
+    guidesTitle: 'Guides',
     contactTitle: 'Contact',
     followTitle: 'Follow us',
     rights: 'All rights reserved.',

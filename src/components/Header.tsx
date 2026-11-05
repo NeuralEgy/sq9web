@@ -2,20 +2,34 @@ import Link from 'next/link';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n';
 import { DEVELOPER } from '@/data/project';
+import { pathFor, type RouteKey } from '@/lib/site';
 
 // هيدر لاصق من غير أي JavaScript:
 // على الموبايل اللينكات في شريط بيتزحلق أفقيًا تحت السطر الأول،
 // وعلى الشاشات الكبيرة بتبقى في نفس السطر. مفيش منيو بتفتح وتقفل،
 // يعني مفيش بَندل جافاسكريبت زيادة على أول تحميل.
-export function Header({ locale, t }: { locale: Locale; t: Dictionary }) {
+// base: فاضية على الصفحة الرئيسية (مراسي جوّه نفس الصفحة)، و/ar أو /en
+// على صفحات الهبوط — من غير كده لينك #story على صفحة هبوط ما بيوديش حتة.
+export function Header({
+  locale,
+  t,
+  base = '',
+  route = 'home',
+}: {
+  locale: Locale;
+  t: Dictionary;
+  base?: string;
+  /** الصفحة الحالية — عشان تبديل اللغة يفضّل الزائر في نفس الصفحة */
+  route?: RouteKey;
+}) {
   const other: Locale = locale === 'ar' ? 'en' : 'ar';
 
   const links = [
-    { href: '#story', label: t.nav.story },
-    { href: '#project', label: t.nav.project },
-    { href: '#units', label: t.nav.units },
-    { href: '#amenities', label: t.nav.amenities },
-    { href: '#location', label: t.nav.location },
+    { href: `${base}#story`, label: t.nav.story },
+    { href: `${base}#project`, label: t.nav.project },
+    { href: `${base}#units`, label: t.nav.units },
+    { href: `${base}#amenities`, label: t.nav.amenities },
+    { href: `${base}#location`, label: t.nav.location },
   ];
 
   return (
@@ -39,14 +53,14 @@ export function Header({ locale, t }: { locale: Locale; t: Dictionary }) {
 
         <div className="flex shrink-0 items-center gap-2">
           <Link
-            href={`/${other}`}
+            href={pathFor(other, route)}
             hrefLang={other}
             className="rounded-full border border-sand-300 px-3 py-1.5 text-sm font-medium text-ink-700 transition hover:bg-sand-100"
           >
             {t.common.switchLang}
           </Link>
           <a
-            href="#visit"
+            href={`${base}#visit`}
             className="hidden rounded-full bg-ink-900 px-4 py-2 text-sm font-semibold text-sand-50 transition hover:bg-ink-800 sm:inline-block"
           >
             {t.nav.visit}

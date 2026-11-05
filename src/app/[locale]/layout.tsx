@@ -2,8 +2,15 @@ import type { Metadata } from 'next';
 import { IBM_Plex_Sans_Arabic } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import '../globals.css';
-import { LOCALES, X_DEFAULT_LOCALE, dirOf, htmlLangOf, isLocale } from '@/i18n/config';
-import { DEVELOPER, PROJECT } from '@/data/project';
+import { LOCALES, dirOf, htmlLangOf, isLocale } from '@/i18n/config';
+import { SITE_URL } from '@/lib/site';
+
+// الحاجة الوحيدة اللي بتتحدد على مستوى الـlayout: الأصل اللي بتتبني عليه
+// العناوين النسبية (صور OG مثلًا). من غيره Next بيقع على localhost:3000
+// وصور المشاركة بتطلع بعناوين غلط في الإنتاج.
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+};
 
 // خط واحد بيغطي العربي واللاتيني — أرخص على الموبايل من تحميل خطين.
 // display: swap عشان النص يظهر فورًا بخط النظام لحد ما الخط ينزل.
@@ -14,42 +21,14 @@ const body = IBM_Plex_Sans_Arabic({
   variable: '--font-body',
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://square9.eg';
-
 // بيولّد نسخة ثابتة لكل لغة وقت البيلد
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  if (!isLocale(locale)) return {};
-
-  const isAr = locale === 'ar';
-
-  return {
-    metadataBase: new URL(SITE_URL),
-    title: isAr
-      ? `${PROJECT.name} — شقق للبيع في مجاويش، الغردقة | ${DEVELOPER.name.ar}`
-      : `${PROJECT.name} — Apartments for Sale in Magawish, Hurghada | ${DEVELOPER.name.en}`,
-    description: isAr
-      ? `${PROJECT.totalUnits} وحدة في منطقة مجاويش بالغردقة — ستوديو وغرفة وغرفتين، تشطيب كامل، تسليم ${PROJECT.deliveryYear}. احجز زيارة للشقة النموذج.`
-      : `${PROJECT.totalUnits} residences in Magawish, Hurghada — studios, one and two bedrooms. Fully finished, delivered ${PROJECT.deliveryYear}. Book a visit to the show apartment.`,
-    alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        ar: '/ar',
-        en: '/en',
-        'x-default': `/${X_DEFAULT_LOCALE}`,
-      },
-    },
-  };
-}
-
+// ملحوظة: الـmetadata (العنوان والوصف وcanonical وhreflang) بتتحدد في كل
+// صفحة لوحدها عن طريق buildMetadata في src/lib/seo.ts — مش هنا. لأن
+// الـlayout مشترك، ولو حطينا عنوان هنا هيورّثه لصفحات الهبوط غلط.
 export default async function LocaleLayout({
   children,
   params,

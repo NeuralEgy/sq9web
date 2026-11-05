@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-body: system-ui;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-sand-50 text-ink-800 antialiased;
+  }
+
+  /* العربي محتاج ارتفاع سطر أعلى شوية عشان التشكيل والنقط */
+  html[lang^='ar'] body {
+    line-height: 1.85;
+  }
+
+  /* أي حاجة بتتحرك: نحترم إعداد تقليل الحركة في النظام */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* عرض المحتوى الموحّد — هوامش الموبايل أولاً */
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+}

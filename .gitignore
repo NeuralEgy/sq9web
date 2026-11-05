@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+
+# أسرار — ولا ملف بيئة بيدخل الريبو
+.env
+.env.*
+!.env.example
+
+.DS_Store
+Thumbs.db
+*.log
+logs/

@@ -7,9 +7,11 @@ import en from './dictionaries/en';
  * يبقى لهم نفس الشكل بالظبط. لو مفتاح ناقص في لغة، TypeScript بيوقّف البيلد —
  * ودي الحماية إن نسخة لغة تطلع ناقصة قسم كامل.
  */
-type DeepString<T> = {
-  [K in keyof T]: T[K] extends string ? string : DeepString<T[K]>;
-};
+type DeepString<T> = T extends string
+  ? string
+  : T extends ReadonlyArray<infer U>
+    ? ReadonlyArray<DeepString<U>>
+    : { [K in keyof T]: DeepString<T[K]> };
 
 export type Dictionary = DeepString<typeof ar>;
 

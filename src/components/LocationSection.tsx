@@ -15,7 +15,7 @@ export function LocationSection({ locale, t }: { locale: Locale; t: Dictionary }
     >
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
         <div>
-          <p className="flex items-start gap-3 text-lg font-medium text-ink-900">
+          <p className="flex items-start gap-3 text-lg font-semibold text-ink-900">
             <IconPin className="mt-1 h-5 w-5 shrink-0 text-sea-600" />
             {LOCATION.address[locale]}
           </p>

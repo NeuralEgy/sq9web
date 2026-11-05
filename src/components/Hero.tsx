@@ -27,7 +27,7 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
           {t.hero.badge}
         </span>
 
-        <p className="mt-6 text-sm font-medium uppercase tracking-[0.2em] text-sea-400">
+        <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-sea-400">
           {t.hero.eyebrow}
         </p>
 

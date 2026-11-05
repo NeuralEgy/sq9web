@@ -19,7 +19,7 @@ export function Story({ t }: { t: Dictionary }) {
               <li key={pillar.title} className="flex gap-4">
                 <span
                   dir="ltr"
-                  className="mt-0.5 shrink-0 text-sm font-bold tabular-nums text-gold-500"
+                  className="mt-0.5 shrink-0 text-sm font-bold tabular-nums text-gold-600"
                 >
                   {String(index + 1).padStart(2, '0')}
                 </span>

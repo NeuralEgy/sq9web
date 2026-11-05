@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --font-body: system-ui;
-  }
+  /* 🔴 ما تحطش هنا ‎--font-body: system-ui كقيمة احتياطية.
+     next/font بيحط المتغيّر ده على <html> عن طريق كلاس، وتعريف هنا
+     بيكسبه في الترتيب فالخط العربي ما بيتحمّلش خالص — الـ@font-face
+     بيفضل مسجّل بس محدش بيستدعيه، والصفحة بتتعرض بخط النظام.
+     البدائل أصلًا موجودة في tailwind.config.ts بعد var(--font-body). */
 
   html {
     scroll-behavior: smooth;

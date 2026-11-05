@@ -12,7 +12,7 @@ export function Experience({ t }: { t: Dictionary }) {
       <ul className="grid gap-5 sm:grid-cols-2">
         {t.experience.items.map((item, index) => (
           <li key={item.title} className="rounded-3xl border border-sand-200 bg-white p-6">
-            <span dir="ltr" className="text-sm font-bold tabular-nums text-gold-500">
+            <span dir="ltr" className="text-sm font-bold tabular-nums text-gold-600">
               {String(index + 1).padStart(2, '0')}
             </span>
             <h3 className="mt-2 text-lg font-semibold text-ink-900">{item.title}</h3>

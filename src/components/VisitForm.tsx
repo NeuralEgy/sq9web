@@ -308,7 +308,7 @@ function Field({
 
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 flex items-baseline gap-2 text-sm font-medium text-sand-100">
+      <label htmlFor={id} className="mb-1.5 flex items-baseline gap-2 text-sm font-semibold text-sand-100">
         {label}
         <span className="text-xs text-sand-200/50">
           {requiredMark ? `(${t.form.required})` : `(${t.form.optional})`}

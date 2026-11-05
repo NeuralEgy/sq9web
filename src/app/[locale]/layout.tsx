@@ -16,7 +16,9 @@ export const metadata: Metadata = {
 // display: swap عشان النص يظهر فورًا بخط النظام لحد ما الخط ينزل.
 const body = IBM_Plex_Sans_Arabic({
   subsets: ['arabic', 'latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  // 🔴 كل وزن = ملفين (عربي + لاتيني) ≈ 48 كيلوبايت. التلاتة دول بس
+  // اللي الموقع بيستخدمهم فعلًا؛ زيادة وزن واحد تكلفتها ربع وزن الصفحة.
+  weight: ['400', '600', '700'],
   display: 'swap',
   variable: '--font-body',
 });

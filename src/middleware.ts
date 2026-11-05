@@ -50,6 +50,11 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // كل حاجة ما عدا ملفات Next والـAPI وملفات الجذر الثابتة
-  matcher: ['/((?!_next|api|.*\\.[^/]+$).*)'],
+  // كل حاجة ما عدا: ملفات Next · الـAPI · أي مسار فيه امتداد (.svg/.xml/.txt)
+  // · ومسارات الميتاداتا اللي Next بيولّدها في الجذر من غير امتداد.
+  //
+  // 🔴 `apple-icon` و`opengraph-image` مفيهمش نقطة، فمن غير استثناء صريح
+  //    الميدلوير كان بيحوّلهم لـ/ar/apple-icon — وده مش موجود، يعني
+  //    أيقونة الآيفون كانت بتدي 404 من غير ما حد ياخد باله.
+  matcher: ['/((?!_next|api|icon|apple-icon|opengraph-image|manifest|sitemap|robots|favicon|.*\\.[^/]+$).*)'],
 };

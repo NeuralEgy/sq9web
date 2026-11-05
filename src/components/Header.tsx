@@ -44,7 +44,7 @@ export function Header({
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ink-700 transition hover:text-sea-600"
+              className="text-sm font-semibold text-ink-700 transition hover:text-sea-600"
             >
               {link.label}
             </a>
@@ -55,7 +55,7 @@ export function Header({
           <Link
             href={pathFor(other, route)}
             hrefLang={other}
-            className="rounded-full border border-sand-300 px-3 py-1.5 text-sm font-medium text-ink-700 transition hover:bg-sand-100"
+            className="rounded-full border border-sand-300 px-3 py-1.5 text-sm font-semibold text-ink-700 transition hover:bg-sand-100"
           >
             {t.common.switchLang}
           </Link>
@@ -77,7 +77,7 @@ export function Header({
           <a
             key={link.href}
             href={link.href}
-            className="shrink-0 text-sm font-medium text-ink-700"
+            className="shrink-0 text-sm font-semibold text-ink-700"
           >
             {link.label}
           </a>

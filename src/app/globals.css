@@ -37,6 +37,18 @@
   }
 }
 
+@layer utilities {
+  /* الشريط المتحرّك في اتجاه A — توقيع بصري موجود على موقعهم الحالي */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
 @layer components {
   /* عرض المحتوى الموحّد — هوامش الموبايل أولاً */
   .container-x {

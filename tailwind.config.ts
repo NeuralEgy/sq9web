@@ -33,6 +33,10 @@ const config: Config = {
       fontFamily: {
         // خط واحد بيغطي العربي واللاتيني — أسرع على الموبايل من خطين
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        // خطوط اتجاهات التصميم (صفحات /preview بس) — اللي هيتختار بيفضل
+        'display-a': ['var(--font-display-a)', 'Georgia', 'serif'],
+        'display-b': ['var(--font-display-b)', 'Georgia', 'serif'],
+        ui: ['var(--font-ui)', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         content: '72rem',

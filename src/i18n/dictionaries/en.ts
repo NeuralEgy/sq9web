@@ -104,6 +104,64 @@ const en = {
     ],
   },
 
+  // شخصيتين المشتري — أسرة ومستثمر
+  personas: {
+    kicker: 'Why are you buying?',
+    heading: 'A home for your family, or an investment?',
+    lead: 'Two different questions with two different answers. Pick the one closer to you.',
+
+    family: {
+      title: 'A home for my family',
+      lead: 'What matters when you are the one living there.',
+      points: [
+        {
+          title: 'Real space',
+          body: 'Two bedrooms up to 142 m² — space on the floor, not on paper.',
+        },
+        {
+          title: 'Somewhere for the children',
+          body: '40% of the land is landscape and pools, including a pool for children.',
+        },
+        {
+          title: 'Quiet without being cut off',
+          body: 'Magawish is a calm residential area, and the city centre is twenty minutes away.',
+        },
+        {
+          title: 'Security',
+          body: '24/7 security and a single gated entrance.',
+        },
+      ],
+      ask: 'Schools and services around the area, and how the rooms are laid out inside the apartment — see those on the visit and ask the sales office.',
+      cta: 'Ask as a family on WhatsApp',
+    },
+
+    investor: {
+      title: 'An investment',
+      lead: 'What matters when you are buying to let or to resell.',
+      points: [
+        {
+          title: 'Location does the work',
+          body: 'Ten minutes from the airport, fifteen from the Marina — that is what moves holiday lets.',
+        },
+        {
+          title: 'Fully finished',
+          body: 'So there is no fit-out spend between handover and your first tenant.',
+        },
+        {
+          title: 'Entry at 10% down',
+          body: 'That is the only published payment figure; the rest of the plan comes from the sales office.',
+        },
+        {
+          title: 'A small project',
+          body: '140 units on 6,000 m² — not hundreds of apartments sharing the same facilities.',
+        },
+      ],
+      // 🔴 أهم سطر في القسم ده
+      ask: 'No yield or occupancy figures are published for this project, and we will not invent one. Pricing, payment plans and the terms for letting and resale all come from the sales office, in writing.',
+      cta: 'Ask as an investor on WhatsApp',
+    },
+  },
+
   // 🔴 القسم اللي بيقف مكان السعر
   price: {
     heading: 'So what does it cost?',

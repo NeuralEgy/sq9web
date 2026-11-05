@@ -9,6 +9,7 @@ import { Units } from '@/components/Units';
 import { Amenities } from '@/components/Amenities';
 import { LocationSection } from '@/components/LocationSection';
 import { Experience } from '@/components/Experience';
+import { Personas } from '@/components/Personas';
 import { PriceAndVisit } from '@/components/PriceAndVisit';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFab } from '@/components/WhatsAppFab';
@@ -41,6 +42,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Amenities locale={locale} t={t} />
         <LocationSection locale={locale} t={t} />
         <Experience t={t} />
+        <Personas locale={locale} t={t} />
         <PriceAndVisit locale={locale} t={t} />
       </main>
 

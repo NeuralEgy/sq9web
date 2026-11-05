@@ -111,6 +111,27 @@ export function IconArrow(p: IconProps) {
   );
 }
 
+export function IconFamily(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <circle cx="8" cy="7" r="2.6" />
+      <circle cx="16.5" cy="8.5" r="2" />
+      <path d="M3 20v-1.5A4.5 4.5 0 0 1 7.5 14h1A4.5 4.5 0 0 1 13 18.5V20" />
+      <path d="M15 20v-1a3.5 3.5 0 0 1 3.5-3.5h.5A2.5 2.5 0 0 1 21.5 18v2" />
+    </Svg>
+  );
+}
+
+export function IconInvestor(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path d="M3 20h18" />
+      <path d="M6 20v-5M11 20V9M16 20v-8M21 20V5" />
+      <path d="M5 10l5-4 4 2 6-5" />
+    </Svg>
+  );
+}
+
 export function IconWhatsapp({ className = 'h-6 w-6' }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">

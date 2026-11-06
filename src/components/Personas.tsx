@@ -1,5 +1,6 @@
 import { COPY } from '@/content/copy';
-import { PROJECT, whatsappUrl } from '@/data/project';
+import { whatsappUrl } from '@/data/company';
+import { PROJECT } from '@/data/projects/aurora-palace';
 import { Eyebrow, SectionTitle } from './Eyebrow';
 
 // ============================================================

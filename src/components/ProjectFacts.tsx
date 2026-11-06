@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { COPY } from '@/content/copy';
-import { IMAGES, PAYMENT, PROJECT } from '@/data/project';
+import { IMAGES, PAYMENT, PROJECT } from '@/data/projects/aurora-palace';
 import { Eyebrow, SectionTitle } from './Eyebrow';
 
 // جدول الحقائق. كل قيمة هنا جاية من src/data/project.ts —

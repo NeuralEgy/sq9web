@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <Header base="/" />
+      <Header variant="company" base="/" />
 
       <main className="shell flex min-h-[60vh] flex-col justify-center py-24 md:py-32">
         <Eyebrow>{COPY.notFound.eyebrow}</Eyebrow>
@@ -68,7 +68,7 @@ export default function NotFound() {
         </div>
       </main>
 
-      <Footer base="/" />
+      <Footer variant="company" base="/" />
     </>
   );
 }

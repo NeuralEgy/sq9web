@@ -8,41 +8,18 @@
 //
 //    الرقم الوحيد المنشور عن السداد: ١٠٪ مقدم. مفيش ولا سعر في أي مكان.
 //
+// بيانات الشركة نفسها (الاسم · التليفون · السوشيال · المقر) مش هنا —
+// دي في src/data/company.ts. الملف ده للمشروع بس، عشان المشروع التاني
+// يبقى ملف جنب ده.
+//
 // النصوص إنجليزي لأن الموقع إنجليزي. التعليقات عربي.
 // ============================================================
 
-// ===== المطوّر =====
-export const DEVELOPER = {
-  name: 'Square9 Developments',
-  shortName: 'SQUARE9',
-  tagline: 'Made to Live Together',
-
-  email: 'info@square9.eg',
-
-  // الرقم المنشور — نفس الرقم للمكالمات والواتساب، وعليه الـagent
-  phoneE164: '+201070015929',
-  phoneDisplay: '+20 107 001 5929',
-
-  // 🔴 الموقع الحالي فيه الرقم غلط: wa.me/2001070015929 و tel:+2001070015929
-  //    (صفر زيادة) — واتساب بيرفض اللينك ده. الصح تحت.
-  whatsappNumber: '201070015929',
-
-  social: {
-    instagram: 'https://instagram.com/square9eg',
-    facebook: 'https://facebook.com/square9eg',
-    linkedin: 'https://linkedin.com/company/square9eg',
-    youtube: 'https://www.youtube.com/@Square9eg',
-  },
-} as const;
-
-/** لينك واتساب مع رسالة جاهزة — الـagent هو اللي بيرد عليه */
-export function whatsappUrl(prefilled?: string): string {
-  const base = `https://wa.me/${DEVELOPER.whatsappNumber}`;
-  return prefilled ? `${base}?text=${encodeURIComponent(prefilled)}` : base;
-}
+import type { ProjectSummary } from './types';
 
 // ===== المشروع =====
 export const PROJECT = {
+  slug: 'aurora-palace',
   name: 'Aurora Palace',
   status: 'Launching Now',
 
@@ -58,6 +35,9 @@ export const PROJECT = {
   finishing: 'Fully finished',
   contract: 'Green Contract',
 } as const;
+
+/** مسار صفحة المشروع. أي لينك للمشروع بيعدّي من هنا. */
+export const PROJECT_PATH = `/${PROJECT.slug}`;
 
 // ===== الموقع =====
 export const LOCATION = {
@@ -156,6 +136,24 @@ export const IMAGES = {
   nightReading: '/images/aurora/night-reading.jpg',
   familyNight: '/images/aurora/family-night.jpg',
 } as const;
+
+// ===== البطاقة على الصفحة الرئيسية =====
+// 🔴 الأرقام هنا بتتقرا من PROJECT فوق مش مكتوبة تاني — عشان ما
+//    يحصلش إن حد يعدّل رقم في حتة وينسى التانية.
+export const AURORA_SUMMARY: ProjectSummary = {
+  slug: PROJECT.slug,
+  name: PROJECT.name,
+  status: PROJECT.status,
+  area: LOCATION.area,
+  city: LOCATION.city,
+  image: IMAGES.aerialPool,
+  totalUnits: PROJECT.totalUnits,
+  areaMinM2: PROJECT.areaMinM2,
+  areaMaxM2: PROJECT.areaMaxM2,
+  deliveryYear: PROJECT.deliveryYear,
+  blurb:
+    'One hundred and forty homes on six thousand square metres in Magawish — ground plus four floors, with forty per cent of the land given to gardens and water.',
+};
 
 // ============================================================
 // 🔴 اللي مش منشور — ممنوع يظهر على الموقع بأي رقم أو تفصيلة

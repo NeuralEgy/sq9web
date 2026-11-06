@@ -23,9 +23,14 @@ export const GUIDES = {
   hurghadaApartments: {
     slug: 'hurghada-apartments-for-sale',
     navLabel: 'Apartments for sale in Hurghada',
-    title: 'Apartments for Sale in Hurghada — Aurora Palace, Magawish | Square9',
+    // 🔴 العنوان والوصف هنا لازم يفضلوا **مختلفين** عن بتوع صفحة
+    //    المشروع (/aurora-palace). كانوا نسخة طبق الأصل منهم، يعني
+    //    الصفحتين بتتنافسوا على نفس الكلمة وجوجل بيختار واحدة ويهمل
+    //    التانية. صفحة المشروع بتاخد الاستعلام الشرائي، والصفحة دي
+    //    بتاخد الاستعلام اللي بيدوّر على معلومة قبل الشرا.
+    title: 'Apartments for Sale in Hurghada — What to Check Before You Buy | Square9',
     description:
-      'Apartments for sale in Hurghada, Magawish: studios, one and two bedrooms from 54 to 142 m². Fully finished, delivered 2028, 10% down. Book a visit to the show apartment.',
+      'A buyer’s guide to apartments for sale in Hurghada: what is actually on offer in Magawish, why the area rather than downtown, and what buying off-plan with 2028 delivery really means.',
     h1: 'Apartments for sale in Hurghada',
     intro:
       'Hurghada has become a place people live, not only a place they holiday. There is a real difference between a flat in a block on the seafront and a home inside a compound with facilities, security and management. Aurora Palace is the second kind, in Magawish.',

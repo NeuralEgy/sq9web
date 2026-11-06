@@ -1,5 +1,5 @@
 import { COPY } from '@/content/copy';
-import { DISTANCES, LOCATION } from '@/data/project';
+import { DISTANCES, LOCATION } from '@/data/projects/aurora-palace';
 import { Eyebrow, SectionTitle } from './Eyebrow';
 
 export function LocationSection() {

@@ -1,6 +1,13 @@
+import Link from 'next/link';
 import { COPY } from '@/content/copy';
 import { Eyebrow, SectionTitle } from './Eyebrow';
 
+// «مين بيبنيه» على صفحة المشروع.
+//
+// المبادئ الأربعة كانت هنا ونقلت لقسم Philosophy على الصفحة الرئيسية —
+// هي فكر الشركة، ومكانها الطبيعي صفحة الشركة. اللي باقي هنا هو الجزء
+// اللي بيخص المشتري الواقف على صفحة المشروع: مين اللي بيبني الحاجة
+// اللي هو بيبص عليها، ولينك يكمّل لو حابب.
 export function Story() {
   return (
     <section className="shell py-24 lg:py-36">
@@ -19,17 +26,14 @@ export function Story() {
             <p key={p.slice(0, 24)}>{p}</p>
           ))}
 
-          <div className="grid gap-x-10 gap-y-6 pt-4 sm:grid-cols-2">
-            {COPY.story.pillars.map((pillar, i) => (
-              <div key={pillar.title} className="border-t border-hair pt-4">
-                <span className="font-display text-sm text-clay">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <p className="mt-1 font-semibold text-ink">{pillar.title}</p>
-                <p className="mt-1 text-base text-ink-muted">{pillar.body}</p>
-              </div>
-            ))}
-          </div>
+          <p className="pt-2">
+            <Link
+              href="/"
+              className="border-b border-clay/40 pb-0.5 text-base uppercase tracking-[0.14em] text-clay transition hover:border-clay"
+            >
+              {COPY.story.more}
+            </Link>
+          </p>
         </div>
       </div>
     </section>

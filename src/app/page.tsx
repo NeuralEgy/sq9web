@@ -3,14 +3,12 @@ import { COPY } from '@/content/copy';
 import { buildMetadata } from '@/lib/seo';
 import { HomeJsonLd } from '@/components/JsonLd';
 import { Header } from '@/components/Header';
-import { Hero } from '@/components/Hero';
-import { Story } from '@/components/Story';
-import { ProjectFacts } from '@/components/ProjectFacts';
-import { Units } from '@/components/Units';
-import { Life } from '@/components/Life';
-import { LocationSection } from '@/components/LocationSection';
-import { Personas } from '@/components/Personas';
-import { PriceAndVisit } from '@/components/PriceAndVisit';
+import { CompanyHero } from '@/components/CompanyHero';
+import { Vision } from '@/components/Vision';
+import { Philosophy } from '@/components/Philosophy';
+import { Strengths } from '@/components/Strengths';
+import { ProjectsIndex } from '@/components/ProjectsIndex';
+import { Connect } from '@/components/Connect';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFab } from '@/components/WhatsAppFab';
 
@@ -20,9 +18,21 @@ export const metadata: Metadata = buildMetadata({
   description: COPY.seo.homeDescription,
 });
 
-// الصفحة الرئيسية — صفحة واحدة طويلة بمراسي.
-// الترتيب مقصود: الزائر الجاي من إعلان بيشوف المشروع والأرقام قبل ما
-// يسيب الصفحة، وسؤال «بكام؟» بيتردّ عليه قبل الفوتر مش بعده.
+// ============================================================
+// الصفحة الرئيسية — Square9 الشركة.
+//
+// الصفحة دي كانت صفحة Aurora Palace، ونقلت بالكامل لـ/aurora-palace.
+// السبب إن الزائر اللي بيشتري وحدة تسليمها ٢٠٢٨ سؤاله الأول مش
+// «الوحدة كام متر» — سؤاله «أنا بثق في مين». فالترتيب تحت بيجاوب
+// بالترتيب ده:
+//
+//   مين إحنا  →  بنؤمن بإيه  →  بنقرّر إزاي  →  نقدر نوريك إيه
+//   (وإيه اللي مش نقدر)  →  بنبني إيه  →  اتكلم معانا
+//
+// 🔴 مفيش قسم «مجلس الإدارة». مش نسيان: مفيش ولا اسم منشور ولا
+//    متسلّم من العميل، وقسم فاضي أو أسامي مخترعة أسوأ من مفيش قسم.
+//    شوف COMPANY_NOT_PUBLISHED في src/data/company.ts.
+// ============================================================
 export default function HomePage() {
   return (
     <>
@@ -35,20 +45,18 @@ export default function HomePage() {
         {COPY.common.skipToContent}
       </a>
 
-      <Header />
+      <Header variant="company" />
 
       <main id="main">
-        <Hero />
-        <Story />
-        <ProjectFacts />
-        <Units />
-        <Life />
-        <LocationSection />
-        <Personas />
-        <PriceAndVisit />
+        <CompanyHero />
+        <Vision />
+        <Philosophy />
+        <Strengths />
+        <ProjectsIndex />
+        <Connect />
       </main>
 
-      <Footer />
+      <Footer variant="company" />
       <WhatsAppFab />
     </>
   );

@@ -1,4 +1,4 @@
-import { VISIT_SLOT_VALUES } from '@/data/project';
+import { VISIT_SLOT_VALUES } from '@/data/projects/aurora-palace';
 
 // ============================================================
 // التحقق من بيانات حجز الزيارة.

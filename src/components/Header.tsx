@@ -1,21 +1,30 @@
 import Link from 'next/link';
 import { COPY } from '@/content/copy';
-import { DEVELOPER } from '@/data/project';
+import { DEVELOPER } from '@/data/company';
+import { navLinks, VISIT_HREF, type NavVariant } from '@/lib/nav';
 
 // هيدر لاصق من غير أي JavaScript:
 // على الموبايل اللينكات في شريط بيتزحلق أفقيًا تحت السطر الأول،
 // وعلى الشاشات الكبيرة في نفس السطر. مفيش منيو بتفتح وتقفل،
 // يعني مفيش بَندل جافاسكريبت زيادة على أول تحميل.
 //
-// base: فاضية على الصفحة الرئيسية (مراسي جوّه نفس الصفحة)، و«/» على
-// صفحات الأدلة — من غير كده لينك #units على صفحة دليل ما بيوديش حتة.
-export function Header({ base = '' }: { base?: string }) {
-  const links = [
-    { href: `${base}#project`, label: COPY.nav.project },
-    { href: `${base}#residences`, label: COPY.nav.residences },
-    { href: `${base}#life`, label: COPY.nav.life },
-    { href: `${base}#location`, label: COPY.nav.location },
-  ];
+// variant: أقسام الصفحة الرئيسية (company) ولا أقسام صفحة المشروع
+//          (project). الليستتين في src/lib/nav.ts.
+//
+// base: فاضية لو اللينكات مراسي جوّه نفس الصفحة، وبادئة مسار لو
+//       الزائر على صفحة تانية — زي «/aurora-palace» على صفحات الأدلة.
+//       من غير كده لينك #residences على صفحة دليل ما بيوديش حتة.
+//
+// 🔴 زرار الحجز ثابت على مسار كامل لصفحة المشروع، مهما كانت الصفحة.
+//    الفورم موجود هناك بس.
+export function Header({
+  variant = 'company',
+  base = '',
+}: {
+  variant?: NavVariant;
+  base?: string;
+}) {
+  const links = navLinks(variant, base);
 
   return (
     <header className="sticky top-0 z-50 border-b border-hair bg-cream/90 backdrop-blur">
@@ -36,7 +45,7 @@ export function Header({ base = '' }: { base?: string }) {
         </nav>
 
         <a
-          href={`${base}#visit`}
+          href={VISIT_HREF}
           className="shrink-0 rounded-full bg-ink px-5 py-2.5 text-[12px] uppercase tracking-[0.16em] text-cream transition hover:bg-clay sm:px-6"
         >
           {COPY.nav.visit}

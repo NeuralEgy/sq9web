@@ -1,4 +1,5 @@
 import { GUIDE_LIST } from '@/content/guides';
+import { PROJECT_PATHS } from '@/data/projects';
 
 // ============================================================
 // إعدادات الموقع المشتركة — المصدر الوحيد للعناوين المطلقة.
@@ -31,5 +32,14 @@ export function absolute(path: string): string {
   return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
 }
 
-/** كل مسارات الموقع — الرئيسية وصفحات الأدلة */
-export const ALL_PATHS: ReadonlyArray<string> = ['/', ...GUIDE_LIST.map((g) => `/${g.slug}`)];
+/**
+ * كل مسارات الموقع — الرئيسية، صفحات المشاريع، وصفحات الأدلة.
+ *
+ * مشروع جديد بيدخل الخريطة لوحده من PROJECT_PATHS، فمحدش محتاج
+ * يفتكر يزوّده هنا.
+ */
+export const ALL_PATHS: ReadonlyArray<string> = [
+  '/',
+  ...PROJECT_PATHS,
+  ...GUIDE_LIST.map((g) => `/${g.slug}`),
+];

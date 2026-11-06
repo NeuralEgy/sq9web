@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { COPY } from '@/content/copy';
 import { GUIDE_LIST } from '@/content/guides';
-import { DEVELOPER, LOCATION } from '@/data/project';
+import { DEVELOPER, HEAD_OFFICE } from '@/data/company';
+import { footerLinks, type NavVariant } from '@/lib/nav';
 
 const SOCIAL: Array<[keyof typeof DEVELOPER.social, string]> = [
   ['instagram', 'Instagram'],
@@ -10,14 +11,19 @@ const SOCIAL: Array<[keyof typeof DEVELOPER.social, string]> = [
   ['youtube', 'YouTube'],
 ];
 
-export function Footer({ base = '' }: { base?: string }) {
-  const sections = [
-    { href: `${base}#project`, label: COPY.nav.project },
-    { href: `${base}#residences`, label: COPY.nav.residences },
-    { href: `${base}#life`, label: COPY.nav.life },
-    { href: `${base}#location`, label: COPY.nav.location },
-    { href: `${base}#visit`, label: COPY.nav.visit },
-  ];
+// الفوتر بياخد نفس variant/base بتوع الهيدر — عشان لينكات الأقسام
+// فيه توافق الصفحة اللي الزائر عليها.
+//
+// العنوان هنا عنوان الشركة (HEAD_OFFICE) مش عنوان المشروع. نفس
+// الشارع دلوقتي، بس أول ما يبقى فيه مشروع في مكان تاني، ده يفضل ثابت.
+export function Footer({
+  variant = 'company',
+  base = '',
+}: {
+  variant?: NavVariant;
+  base?: string;
+}) {
+  const sections = footerLinks(variant, base);
 
   return (
     <footer className="shell py-16">
@@ -27,7 +33,7 @@ export function Footer({ base = '' }: { base?: string }) {
             {DEVELOPER.shortName}
           </p>
           <p className="mt-4 max-w-xs leading-relaxed text-ink-muted">{COPY.footer.tagline}</p>
-          <p className="mt-4 text-ink-muted">{LOCATION.address}</p>
+          <p className="mt-4 text-ink-muted">{HEAD_OFFICE.address}</p>
         </div>
 
         <nav aria-label={COPY.nav.sections}>

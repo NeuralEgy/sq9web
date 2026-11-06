@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { COPY } from '@/content/copy';
 import type { Guide } from '@/content/guides';
-import { PROJECT, whatsappUrl } from '@/data/project';
+import { DEVELOPER, whatsappUrl } from '@/data/company';
+import { PROJECT, PROJECT_PATH } from '@/data/projects/aurora-palace';
+import { VISIT_HREF } from '@/lib/nav';
 import { BreadcrumbJsonLd } from './JsonLd';
 import { Footer } from './Footer';
 import { Header } from './Header';
@@ -11,8 +13,12 @@ import { WhatsAppFab } from './WhatsAppFab';
 // الشكل المشترك لصفحات الأدلة.
 //
 // كل صفحة بتجاوب على سؤال حقيقي من جوجل، وبتنتهي بنفس الخطوة:
-// زيارة أو واتساب. والهيدر والفوتر بياخدوا base="/" عشان لينكات
-// المراسي ترجّع الزائر للصفحة الرئيسية مش تقف مكانها.
+// زيارة أو واتساب.
+//
+// 🔴 الهيدر والفوتر بياخدوا base=PROJECT_PATH مش "/" — الأقسام اللي
+//    في اللينكات دي (#residences · #life · #location) على صفحة
+//    المشروع، مش على الرئيسية. لو سابوا "/" الزائر بيروح للرئيسية
+//    وبيدوّر على قسم مش موجود هناك.
 // ============================================================
 
 /** بيحوّل **كده** لـ<strong> — الحاجة الوحيدة اللي محتاجينها من الماركداون */
@@ -39,14 +45,14 @@ export function GuidePage({ guide }: { guide: Guide }) {
   return (
     <>
       <BreadcrumbJsonLd pageName={guide.h1} path={`/${guide.slug}`} />
-      <Header base="/" />
+      <Header variant="project" base={PROJECT_PATH} />
 
       <main>
         <article className="shell py-14 lg:py-20">
           {/* فتات الخبز المرئي — مش بس في البيانات المنظّمة */}
           <nav aria-label="Breadcrumb" className="text-sm text-ink-muted">
             <Link href="/" className="transition hover:text-clay">
-              {PROJECT.name}
+              {DEVELOPER.name}
             </Link>
             <span className="mx-2 text-ink-muted/50">/</span>
             <span className="text-ink">{guide.h1}</span>
@@ -87,7 +93,7 @@ export function GuidePage({ guide }: { guide: Guide }) {
             <p className="mt-5 leading-relaxed text-cream/70">{COPY.pricing.closing}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/#visit"
+                href={VISIT_HREF}
                 className="rounded-full bg-gold px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] text-ink transition hover:bg-cream"
               >
                 {COPY.nav.visit}
@@ -105,7 +111,7 @@ export function GuidePage({ guide }: { guide: Guide }) {
         </article>
       </main>
 
-      <Footer base="/" />
+      <Footer variant="project" base={PROJECT_PATH} />
       <WhatsAppFab />
     </>
   );

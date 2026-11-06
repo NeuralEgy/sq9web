@@ -1,12 +1,22 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
-import { PROJECT } from '@/data/project';
+import { COPY } from '@/content/copy';
+import { DEVELOPER, HEAD_OFFICE } from '@/data/company';
 
 // ============================================================
-// صورة المشاركة — دي اللي بتظهر لما حد يبعت لينك الموقع على واتساب
-// أو فيسبوك. وفي سوق واتساب-أولاً زي ده، اللينك العاري بلا صورة
-// بيبان مريب؛ الكارت بيخلّيه يبان رسمي.
+// صورة المشاركة للصفحة الرئيسية — الشركة.
+//
+// دي اللي بتظهر لما حد يبعت لينك الموقع على واتساب أو فيسبوك. وفي
+// سوق واتساب-أولاً زي ده، اللينك العاري بلا صورة بيبان مريب؛ الكارت
+// بيخلّيه يبان رسمي.
+//
+// صورة المشروع ليها ملف لوحدها في src/app/aurora-palace — عشان لينك
+// صفحة المشروع يطلّع أرقام المشروع، ولينك الرئيسية يطلّع الشركة.
+//
+// 🔴 الشريط السفلي هنا المبادئ الأربعة المنشورة، مش أرقام. الشركة
+//    مالهاش أرقام منشورة (لا سنة تأسيس ولا مشاريع متسلّمة)، وكارت
+//    مشاركة فيه رقم مخترع بيتنسخ ويتبعت ومش بيرجع.
 //
 // 🔴 ImageResponse مابيعرفش خطوط الموقع — لازم نديله ملف الخط
 //    بايت بايت. من غير كده بيقع على خط sans افتراضي والكارت بيبقى
@@ -16,7 +26,7 @@ import { PROJECT } from '@/data/project';
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = 'Aurora Palace — Square9 Developments, Hurghada';
+export const alt = 'Square9 Developments — property developer in Hurghada, Red Sea';
 
 const fontDir = join(process.cwd(), 'src', 'assets');
 
@@ -44,12 +54,12 @@ export default async function Image() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           <div style={{ width: 44, height: 2, background: '#a0552f', display: 'flex' }} />
           <span style={{ fontSize: 26, letterSpacing: 8, color: '#a0552f' }}>
-            MAGAWISH · HURGHADA · RED SEA
+            {DEVELOPER.shortName} DEVELOPMENTS · {HEAD_OFFICE.city.toUpperCase()}
           </span>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontSize: 112, lineHeight: 1.0 }}>Made to live</span>
+          <span style={{ fontSize: 112, lineHeight: 1.0 }}>{COPY.company.hero.titleLead}</span>
           <span
             style={{
               fontSize: 112,
@@ -59,10 +69,10 @@ export default async function Image() {
               marginTop: 2,
             }}
           >
-            together
+            {COPY.company.hero.titleAccent}
           </span>
           <span style={{ fontSize: 34, color: '#6b6055', marginTop: 28 }}>
-            {PROJECT.name} — {PROJECT.totalUnits} residences in Magawish, Hurghada
+            {DEVELOPER.name} — building communities in {HEAD_OFFICE.city}, {HEAD_OFFICE.region}
           </span>
         </div>
 
@@ -74,10 +84,14 @@ export default async function Image() {
             paddingTop: 30,
           }}
         >
-          <Fact value={`${PROJECT.areaMinM2}–${PROJECT.areaMaxM2} m²`} label="Unit sizes" />
-          <Fact value={`${PROJECT.landAreaM2.toLocaleString('en-US')} m²`} label="Land" />
-          <Fact value={`${PROJECT.deliveryYear}`} label="Delivery" />
-          <Fact value={PROJECT.finishing} label="Finish" />
+          {COPY.company.philosophy.pillars.map((pillar, i) => (
+            <div key={pillar.title} style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontSize: 24, color: '#a0552f' }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span style={{ fontSize: 40, marginTop: 6 }}>{pillar.title}</span>
+            </div>
+          ))}
         </div>
       </div>
     ),
@@ -88,14 +102,5 @@ export default async function Image() {
         { name: 'Cormorant', data: italic, style: 'italic' },
       ],
     },
-  );
-}
-
-function Fact({ value, label }: { value: string; label: string }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <span style={{ fontSize: 44 }}>{value}</span>
-      <span style={{ fontSize: 24, color: '#6b6055', marginTop: 8 }}>{label}</span>
-    </div>
   );
 }

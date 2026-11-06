@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { COPY } from '@/content/copy';
-import { AMENITIES, IMAGES, PROJECT } from '@/data/project';
+import { AMENITIES, IMAGES, PROJECT } from '@/data/projects/aurora-palace';
 import { Eyebrow, SectionTitle } from './Eyebrow';
 
 export function Life() {

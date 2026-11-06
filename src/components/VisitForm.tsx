@@ -2,7 +2,8 @@
 
 import { useId, useState } from 'react';
 import { COPY } from '@/content/copy';
-import { VISIT_SLOTS, whatsappUrl } from '@/data/project';
+import { whatsappUrl } from '@/data/company';
+import { VISIT_SLOTS } from '@/data/projects/aurora-palace';
 import { todayInCairo, type VisitErrorCode, type VisitFieldName } from '@/lib/visit-validation';
 
 // ============================================================

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { COPY } from '@/content/copy';
-import { IMAGES, PROJECT, UNIT_TYPES, whatsappUrl } from '@/data/project';
+import { whatsappUrl } from '@/data/company';
+import { IMAGES, PROJECT, UNIT_TYPES } from '@/data/projects/aurora-palace';
 import { Eyebrow, SectionTitle } from './Eyebrow';
 
 // 🔴 الوحدات من غير سعر ومن غير حالة توفّر — دول مش معروفين.

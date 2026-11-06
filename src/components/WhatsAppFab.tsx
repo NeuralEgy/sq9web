@@ -1,4 +1,5 @@
-import { PROJECT, whatsappUrl } from '@/data/project';
+import { whatsappUrl } from '@/data/company';
+import { PROJECT } from '@/data/projects/aurora-palace';
 import { IconWhatsapp } from './Icons';
 
 const WA_TEXT = `Hello, I would like details about ${PROJECT.name}`;

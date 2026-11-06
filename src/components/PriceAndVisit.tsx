@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { COPY } from '@/content/copy';
-import { DEVELOPER, IMAGES } from '@/data/project';
+import { DEVELOPER } from '@/data/company';
+import { IMAGES } from '@/data/projects/aurora-palace';
 import { VisitForm } from './VisitForm';
 
 // ============================================================

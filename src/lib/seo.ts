@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { DEVELOPER } from '@/data/project';
+import { DEVELOPER } from '@/data/company';
 import { absolute, IS_PRODUCTION_HOST, SITE_URL } from './site';
 
 // ============================================================

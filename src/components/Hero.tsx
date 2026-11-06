@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { COPY } from '@/content/copy';
-import { IMAGES, PROJECT, whatsappUrl } from '@/data/project';
+import { whatsappUrl } from '@/data/company';
+import { IMAGES, PROJECT } from '@/data/projects/aurora-palace';
 import { Eyebrow } from './Eyebrow';
 
 const WA_TEXT = `Hello, I would like details about ${PROJECT.name}`;

@@ -1,7 +1,10 @@
-# square9-web
+# sq9web
 
 موقع **Square9 Developments** العام — مشروع Aurora Palace، الغردقة.
-ريبو منفصل تمامًا عن `square9Agent` (ده موقع عام، وده نظام داخلي).
+<https://github.com/NeuralEgy/sq9web> · private
+
+ريبو منفصل تمامًا عن [`square9Agent`](https://github.com/NeuralEgy/square9Agent)
+(ده موقع عام، وده نظام داخلي).
 
 ```bash
 npm install

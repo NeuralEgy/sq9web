@@ -211,6 +211,16 @@ export const COPY = {
     rights: 'All rights reserved.',
   },
 
+  // صفحة 404. أي مسار مش معروف بيوصل هنا.
+  notFound: {
+    eyebrow: 'Error 404',
+    title: 'Nothing lives at',
+    titleAccent: 'this address',
+    body: 'The link you followed does not lead anywhere on this site. It may have been mistyped, or the page may have moved. The pages below are the ones that exist.',
+    home: 'Back to Aurora Palace',
+    guides: 'Or start from one of these',
+  },
+
   common: {
     skipToContent: 'Skip to content',
     minutes: 'min',

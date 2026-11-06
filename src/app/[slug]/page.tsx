@@ -5,13 +5,15 @@ import { buildMetadata } from '@/lib/seo';
 import { GuidePage } from '@/components/GuidePage';
 
 // صفحات الأدلة كلها بتعدّي من هنا. generateStaticParams بيولّدهم
-// وقت البيلد، و dynamicParams=false بيخلّي أي مسار تاني 404 بدل ما
-// يتولّد صفحة فاضية.
+// وقت البيلد، وأي مسار تاني بيروح على notFound() تحت.
+//
+// 🔴 كان هنا dynamicParams = false. شيلناها لأنها بتخلّي Next يرمي
+//    NoFallbackError جوّه لكل مسار مجهول — بيرد 404 صح، بس بيملا
+//    error.log بـstack trace على كل زحف بوت. notFound() بيوصل
+//    لنفس النتيجة بالظبط من غير اللغوصة دي.
 export function generateStaticParams() {
   return GUIDE_LIST.map((g) => ({ slug: g.slug }));
 }
-
-export const dynamicParams = false;
 
 function findGuide(slug: string) {
   return GUIDE_LIST.find((g) => g.slug === slug);

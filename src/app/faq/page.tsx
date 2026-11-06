@@ -113,7 +113,7 @@ export default function FaqPage() {
         </section>
       </main>
 
-      <Footer variant="company" base="/" />
+      <Footer />
       <WhatsAppFab />
     </>
   );

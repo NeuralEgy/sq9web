@@ -70,7 +70,7 @@ export default function AuroraPalacePage() {
         <PriceAndVisit />
       </main>
 
-      <Footer variant="project" />
+      <Footer />
       <WhatsAppFab />
     </>
   );

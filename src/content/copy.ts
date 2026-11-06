@@ -33,6 +33,9 @@ export const COPY = {
 
     // صفحات مستقلة
     faq: 'Questions',
+    philosophyPage: 'Philosophy',
+    buying: 'Buying',
+    leadership: 'Leadership',
 
     // أقسام صفحة المشروع
     project: 'The Project',
@@ -174,6 +177,143 @@ export const COPY = {
       ctaVisit: 'Book a visit',
       ctaWhatsapp: 'WhatsApp',
     },
+  },
+
+  // ============================================================
+  // المؤسِّس — بيظهر بس لما src/data/leadership.ts يتملا
+  // ============================================================
+  founder: {
+    eyebrow: 'The founder',
+    titleLead: 'Who decided',
+    titleAccent: 'all this',
+    // 🔴 مفيش هنا أي جملة بتوصف المؤسِّس. الوصف الوحيد اللي هيظهر
+    //    هو كلامه هو، من ملف البيانات. اللي هنا لافتات بس.
+    readMore: 'Read the full letter',
+    seoTitle: 'The Founder — Square9 Developments, Hurghada',
+    seoDescription:
+      'The person behind Square9 Developments in Hurghada, in their own words: why the company was built and what it decided to do differently.',
+  },
+
+  // ============================================================
+  // صفحة /philosophy
+  // ============================================================
+  philosophyPage: {
+    eyebrow: 'Our philosophy',
+    title: 'Four things we',
+    titleAccent: 'decide by',
+    intro:
+      'Four words are easy. What follows each one here is the decision it forced and the number that proves it was taken — because a principle that costs nothing is not a principle, it is decoration.',
+    seoTitle: 'How Square9 Designs — Community, Intention, Balance, Presence',
+    seoDescription:
+      'The four principles behind Square9 Developments in Hurghada, and the decisions each one forced at Aurora Palace: 140 homes, ground plus four floors, forty per cent landscape.',
+    // 🔴 كل مبدأ تحته «الدليل» — وكل دليل رقم منشور في
+    //    src/data/projects/aurora-palace.ts. لو زوّدت مبدأ، لازم
+    //    يكون وراه رقم زيهم. مبدأ من غير دليل بيرجع للرئيسية سطر
+    //    واحد وخلاص.
+    principles: [
+      {
+        title: 'Community',
+        line: 'Neighbourhoods where families connect.',
+        body: [
+          'Community is mostly a function of arithmetic. At a hundred and forty homes you start recognising people at the pool. At six hundred sharing the same facilities you never do, and what you have bought is a hotel you happen to own a room in.',
+          'So Aurora Palace is 140 residences on 6,000 m², behind a single gated entrance. Four pools, a restaurant and a gym for that number of homes rather than for a number that makes the spreadsheet work.',
+        ],
+        proof: '140 residences · one gated entrance',
+      },
+      {
+        title: 'Intention',
+        line: 'Every space designed with a purpose.',
+        body: [
+          'The honest test of intention is what you choose not to build. Forty per cent of this land is landscape and water — floor area that was never going to be sold, on a plot where every square metre could have been.',
+          'The building is ground plus four floors. The same land would have carried a tower, and a tower would have carried more units. It does not, and that was a decision somebody signed.',
+        ],
+        proof: '40% landscape · ground + 4 floors',
+      },
+      {
+        title: 'Balance',
+        line: 'Modern living against the landscape.',
+        body: [
+          'Magawish is quiet. That is usually a polite way of saying remote, and here it is not: the airport is ten minutes away, Senzo Mall ten, Marina Boulevard fifteen, the city centre twenty.',
+          'That gap — calm to live in, close to everything by car — is the whole argument for the address. Lose either half and you have an ordinary location with a view.',
+        ],
+        proof: '10 min to the airport · 20 to the centre',
+      },
+      {
+        title: 'Presence',
+        line: 'Homes that feel like home at any hour.',
+        body: [
+          'A render is made at golden hour. Nobody lives at golden hour. A home has to work at seven in the morning and at midnight, which is a harder thing to design and an impossible thing to photograph.',
+          'The units are handed over fully finished, so there is no fit-out between the keys and the first night. The show apartment is already built — and if you want the honest version of it, book the four o’clock appointment rather than the eleven.',
+        ],
+        proof: 'Fully finished · the show apartment is built',
+      },
+    ],
+  },
+
+  // ============================================================
+  // صفحة /buying
+  // ============================================================
+  buyingPage: {
+    eyebrow: 'Buying',
+    title: 'From the first visit',
+    titleAccent: 'to the keys',
+    intro:
+      'Six steps, in order, with the awkward part of each one left in rather than taken out. Where a figure is published it is here; where it is not, this says who holds it and what to ask them for.',
+    seoTitle: 'Buying at Aurora Palace, Hurghada — The Steps, Start to Handover | Square9',
+    seoDescription:
+      'How buying at Aurora Palace in Magawish, Hurghada works, step by step: the show apartment visit, choosing a size, getting a price in writing, the 10% down payment, the contract, and handover in 2028.',
+    stepLabel: 'Step',
+    steps: [
+      {
+        title: 'See the show apartment',
+        body: [
+          'Four appointment times a day — 9am, 11am, 2pm and 4pm — with no obligation and nothing to sign.',
+          'For a building that will not exist until 2028, this is the only physical evidence there is. Go at four if you can; the light at eleven flatters everything.',
+        ],
+        note: null,
+      },
+      {
+        title: 'Choose the size',
+        body: [
+          'Three types: a studio at 54 to 80 m², one bedroom at 65 to 102 m², two bedrooms at 101 to 142 m². The ranges overlap, so a large studio is bigger than a small one bedroom — what actually changes between them is whether there is a door between the bed and everything else.',
+        ],
+        note: null,
+      },
+      {
+        title: 'Get the price — for one specific unit',
+        body: [
+          'The price depends on the floor, the area and the plan, and it is confirmed per unit by the sales office.',
+        ],
+        note: 'No price is published on this site and none is going to be. Ask for the figure for the exact unit you stood in, by floor and area, in writing. A price given out loud is not a price.',
+      },
+      {
+        title: 'The payment',
+        body: [
+          'The published figure is a **10% down payment**, with the plans described as flexible. That is the whole of what has been announced.',
+        ],
+        note: 'The instalment dates to handover, anything due on delivery, and the maintenance charge are all held by the sales office. Ask for the schedule on paper before you commit to anything.',
+      },
+      {
+        title: 'The contract',
+        body: [
+          'A Green Contract, with the unit handed over fully finished.',
+          'Those two phrases are published, and neither of them is a specification. Read the finish schedule itself, and read the handover clause — including what applies if the date slips. If you intend to resell before handover, that clause matters too, and it is easier to ask about now than later.',
+        ],
+        note: null,
+      },
+      {
+        title: 'Handover, 2028',
+        body: [
+          'You are buying off-plan: you contract now, pay in instalments, and take the keys then. Fully finished means there is no fit-out period between handover and moving in or letting.',
+        ],
+        note: null,
+      },
+    ],
+    closingTitle: 'One rule for all six',
+    closing:
+      'Anything that will end up in a contract should reach you in writing before you sign, not after. Every developer worth buying from expects to be asked, and the one that hesitates has told you something.',
+    faqCta: 'The questions, answered',
+    visitCta: 'Book a visit',
   },
 
   // ============================================================
@@ -409,6 +549,7 @@ export const COPY = {
     tagline: 'We build communities in Hurghada where people live together, not merely side by side.',
     contact: 'Contact',
     follow: 'Follow',
+    pages: 'Pages',
     rights: 'All rights reserved.',
   },
 

@@ -94,7 +94,7 @@ export function GuidePage({ guide }: { guide: Guide }) {
         </article>
       </main>
 
-      <Footer variant="project" base={PROJECT_PATH} />
+      <Footer />
       <WhatsAppFab />
     </>
   );

@@ -1,3 +1,5 @@
+import { HAS_LEADERSHIP } from '@/data/leadership';
+
 // ============================================================
 // مسارات الصفحات الثابتة.
 //
@@ -12,11 +14,26 @@
 
 export const ROUTES = {
   home: '/',
+  philosophy: '/philosophy',
+  leadership: '/leadership',
+  buying: '/buying',
   faq: '/faq',
   contact: '/contact',
 } as const;
 
 export type Route = (typeof ROUTES)[keyof typeof ROUTES];
 
-/** الصفحات الثابتة اللي بتدخل الـsitemap (الرئيسية بتتضاف لوحدها) */
-export const STATIC_PATHS: ReadonlyArray<string> = [ROUTES.faq, ROUTES.contact];
+/**
+ * الصفحات الثابتة اللي بتدخل الـsitemap والمنيو (الرئيسية بتتضاف لوحدها).
+ *
+ * 🔴 /leadership بتدخل بس لما src/data/leadership.ts يتملا. وهي
+ *    فاضية، الصفحة نفسها بترد 404 — فلو دخلت الخريطة كانت هتبقى
+ *    لينك مكسور، وجوجل بيحسبها غلطة على الموقع كله.
+ */
+export const STATIC_PATHS: ReadonlyArray<string> = [
+  ROUTES.philosophy,
+  ...(HAS_LEADERSHIP ? [ROUTES.leadership] : []),
+  ROUTES.buying,
+  ROUTES.faq,
+  ROUTES.contact,
+];

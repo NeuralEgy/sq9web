@@ -68,7 +68,7 @@ export default function NotFound() {
         </div>
       </main>
 
-      <Footer variant="company" base="/" />
+      <Footer />
     </>
   );
 }

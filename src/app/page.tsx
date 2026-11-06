@@ -8,6 +8,7 @@ import { Vision } from '@/components/Vision';
 import { Philosophy } from '@/components/Philosophy';
 import { Strengths } from '@/components/Strengths';
 import { ProjectsIndex } from '@/components/ProjectsIndex';
+import { FounderNote } from '@/components/FounderNote';
 import { Questions } from '@/components/Questions';
 import { Connect } from '@/components/Connect';
 import { Footer } from '@/components/Footer';
@@ -54,12 +55,14 @@ export default function HomePage() {
         <Vision />
         <Philosophy />
         <Strengths />
+        {/* بيرجع null لحد ما src/data/leadership.ts يتملا */}
+        <FounderNote />
         <ProjectsIndex />
         <Questions />
         <Connect />
       </main>
 
-      <Footer variant="company" />
+      <Footer />
       <WhatsAppFab />
     </>
   );

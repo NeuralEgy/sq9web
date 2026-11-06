@@ -163,7 +163,7 @@ export default function ContactPage() {
         </section>
       </main>
 
-      <Footer variant="company" base="/" />
+      <Footer />
       <WhatsAppFab />
     </>
   );

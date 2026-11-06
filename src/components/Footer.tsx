@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { COPY } from '@/content/copy';
 import { GUIDE_LIST } from '@/content/guides';
 import { DEVELOPER, HEAD_OFFICE } from '@/data/company';
-import { footerLinks, type NavVariant } from '@/lib/nav';
+import { sitePages } from '@/lib/nav';
 
 const SOCIAL: Array<[keyof typeof DEVELOPER.social, string]> = [
   ['instagram', 'Instagram'],
@@ -16,14 +16,12 @@ const SOCIAL: Array<[keyof typeof DEVELOPER.social, string]> = [
 //
 // العنوان هنا عنوان الشركة (HEAD_OFFICE) مش عنوان المشروع. نفس
 // الشارع دلوقتي، بس أول ما يبقى فيه مشروع في مكان تاني، ده يفضل ثابت.
-export function Footer({
-  variant = 'company',
-  base = '',
-}: {
-  variant?: NavVariant;
-  base?: string;
-}) {
-  const sections = footerLinks(variant, base);
+// 🔴 الفوتر ما بقاش بياخد variant ولا base. كان بياخدهم لما كان
+//    بيعرض مراسي الصفحة اللي إنت عليها؛ دلوقتي بيعرض **كل** صفحات
+//    الموقع من كل صفحة، فالليستة واحدة مهما كنت فين. ده اللي
+//    بيخلّي كل مسار يتزحف من أي صفحة، والصفحة اليتيمة ما بتترتبش.
+export function Footer() {
+  const sections = sitePages();
 
   return (
     <footer className="shell py-16">
@@ -36,8 +34,8 @@ export function Footer({
           <p className="mt-4 text-ink-muted">{HEAD_OFFICE.address}</p>
         </div>
 
-        <nav aria-label={COPY.nav.sections}>
-          <h2 className="text-[12px] uppercase tracking-[0.18em] text-ink">{COPY.nav.sections}</h2>
+        <nav aria-label={COPY.footer.pages}>
+          <h2 className="text-[12px] uppercase tracking-[0.18em] text-ink">{COPY.footer.pages}</h2>
           <ul className="mt-5 space-y-2.5">
             {sections.map((s) => (
               <li key={s.href}>

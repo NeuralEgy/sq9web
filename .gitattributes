@@ -1,0 +1,11 @@
+# 🔴 سكربتات الشل لازم تنزل على السيرفر بنهايات أسطر LF.
+#    لو نزلت CRLF، لينكس بيرد بـ"bad interpreter: No such file or directory"
+#    وهي رسالة ما بتقولش السبب الحقيقي خالص.
+*.sh   text eol=lf
+*.conf text eol=lf
+*.sql  text eol=lf
+
+# الصور ثنائية — ما تتلمسش
+*.jpg binary
+*.png binary
+*.ttf binary

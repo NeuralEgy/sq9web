@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { DEVELOPER } from '@/data/project';
-import { absolute, SITE_URL } from './site';
+import { absolute, IS_PRODUCTION_HOST, SITE_URL } from './site';
 
 // ============================================================
 // بناء الـmetadata لأي صفحة. كل الصفحات بتعدّي من هنا عشان
@@ -34,10 +34,14 @@ export function buildMetadata({
       title,
       description,
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
-    },
+    // 🔴 نسخة المراجعة بتاخد noindex على مستوى الصفحة كمان، مش robots.txt
+    //    بس — في حالة إن حد عمل لينك مباشر لصفحة جوّه.
+    robots: IS_PRODUCTION_HOST
+      ? {
+          index: true,
+          follow: true,
+          googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+        }
+      : { index: false, follow: false },
   };
 }

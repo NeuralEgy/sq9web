@@ -1,75 +1,56 @@
 import Link from 'next/link';
-import type { Locale } from '@/i18n/config';
-import type { Dictionary } from '@/i18n';
-import { DEVELOPER, LOCATION, whatsappUrl } from '@/data/project';
-import { pathFor } from '@/lib/site';
-import { IconWhatsapp } from './Icons';
+import { COPY } from '@/content/copy';
+import { GUIDE_LIST } from '@/content/guides';
+import { DEVELOPER, LOCATION } from '@/data/project';
 
-const SOCIAL_LABELS: Array<{ key: keyof typeof DEVELOPER.social; label: string }> = [
-  { key: 'instagram', label: 'Instagram' },
-  { key: 'facebook', label: 'Facebook' },
-  { key: 'linkedin', label: 'LinkedIn' },
-  { key: 'youtube', label: 'YouTube' },
+const SOCIAL: Array<[keyof typeof DEVELOPER.social, string]> = [
+  ['instagram', 'Instagram'],
+  ['facebook', 'Facebook'],
+  ['linkedin', 'LinkedIn'],
+  ['youtube', 'YouTube'],
 ];
 
-export function Footer({
-  locale,
-  t,
-  base = '',
-}: {
-  locale: Locale;
-  t: Dictionary;
-  base?: string;
-}) {
-  const sectionLinks = [
-    { href: `${base}#story`, label: t.nav.story },
-    { href: `${base}#project`, label: t.nav.project },
-    { href: `${base}#units`, label: t.nav.units },
-    { href: `${base}#location`, label: t.nav.location },
-    { href: `${base}#visit`, label: t.nav.visit },
-  ];
-
-  // صفحات الهبوط — موجودة في الفوتر عشان تتزحف من كل صفحة،
-  // ده أرخص وأهم من أي حاجة SEO تانية: الصفحات اليتيمة ما بتترتبش.
-  const guideLinks = [
-    { href: pathFor(locale, 'hurghadaApartments'), label: t.landing.hurghadaApartments.navLabel },
-    { href: pathFor(locale, 'magawish'), label: t.landing.magawish.navLabel },
-    { href: pathFor(locale, 'offPlan'), label: t.landing.offPlan.navLabel },
+export function Footer({ base = '' }: { base?: string }) {
+  const sections = [
+    { href: `${base}#project`, label: COPY.nav.project },
+    { href: `${base}#residences`, label: COPY.nav.residences },
+    { href: `${base}#life`, label: COPY.nav.life },
+    { href: `${base}#location`, label: COPY.nav.location },
+    { href: `${base}#visit`, label: COPY.nav.visit },
   ];
 
   return (
-    <footer className="border-t border-sand-200 bg-sand-100 py-14">
-      <div className="container-x grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
-        <div className="lg:col-span-2">
-          <p className="text-lg font-bold text-ink-900">{DEVELOPER.name[locale]}</p>
-          <p className="mt-3 max-w-sm leading-relaxed text-ink-700">{t.footer.tagline}</p>
-          <p className="mt-4 text-ink-700">{LOCATION.address[locale]}</p>
+    <footer className="shell py-16">
+      <div className="grid gap-12 border-t border-hair pt-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p className="font-display text-2xl font-semibold tracking-[0.14em]">
+            {DEVELOPER.shortName}
+          </p>
+          <p className="mt-4 max-w-xs leading-relaxed text-ink-muted">{COPY.footer.tagline}</p>
+          <p className="mt-4 text-ink-muted">{LOCATION.address}</p>
         </div>
 
-        <nav aria-label={t.footer.navTitle}>
-          <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-900">
-            {t.footer.navTitle}
-          </h2>
-          <ul className="mt-4 space-y-2">
-            {sectionLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="text-ink-700 transition hover:text-sea-600">
-                  {link.label}
+        <nav aria-label={COPY.nav.sections}>
+          <h2 className="text-[12px] uppercase tracking-[0.18em] text-ink">{COPY.nav.sections}</h2>
+          <ul className="mt-5 space-y-2.5">
+            {sections.map((s) => (
+              <li key={s.href}>
+                <a href={s.href} className="text-ink-muted transition hover:text-clay">
+                  {s.label}
                 </a>
               </li>
             ))}
           </ul>
         </nav>
 
-        <nav aria-label={t.footer.guidesTitle}>
-          <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-900">
-            {t.footer.guidesTitle}
-          </h2>
-          <ul className="mt-4 space-y-2">
-            {guideLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="text-ink-700 transition hover:text-sea-600">
-                  {link.label}
+        {/* الأدلة في الفوتر عشان تتزحف من كل صفحة — الصفحة اليتيمة ما بتترتبش */}
+        <nav aria-label={COPY.nav.guides}>
+          <h2 className="text-[12px] uppercase tracking-[0.18em] text-ink">{COPY.nav.guides}</h2>
+          <ul className="mt-5 space-y-2.5">
+            {GUIDE_LIST.map((g) => (
+              <li key={g.slug}>
+                <Link href={`/${g.slug}`} className="text-ink-muted transition hover:text-clay">
+                  {g.navLabel}
                 </Link>
               </li>
             ))}
@@ -77,16 +58,12 @@ export function Footer({
         </nav>
 
         <div>
-          <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-900">
-            {t.footer.contactTitle}
-          </h2>
-          <ul className="mt-4 space-y-2">
+          <h2 className="text-[12px] uppercase tracking-[0.18em] text-ink">{COPY.footer.contact}</h2>
+          <ul className="mt-5 space-y-2.5">
             <li>
-              {/* dir=ltr لازم: من غيره الرقم بينقلب في الصفحة العربية */}
               <a
                 href={`tel:${DEVELOPER.phoneE164}`}
-                dir="ltr"
-                className="inline-block text-ink-700 transition hover:text-sea-600"
+                className="text-ink-muted transition hover:text-clay"
               >
                 {DEVELOPER.phoneDisplay}
               </a>
@@ -94,38 +71,26 @@ export function Footer({
             <li>
               <a
                 href={`mailto:${DEVELOPER.email}`}
-                dir="ltr"
-                className="inline-block text-ink-700 transition hover:text-sea-600"
+                className="text-ink-muted transition hover:text-clay"
               >
                 {DEVELOPER.email}
               </a>
             </li>
-            <li>
-              <a
-                href={whatsappUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-ink-700 transition hover:text-sea-600"
-              >
-                <IconWhatsapp className="h-4 w-4" />
-                WhatsApp
-              </a>
-            </li>
           </ul>
 
-          <h2 className="mt-7 text-sm font-semibold uppercase tracking-[0.16em] text-ink-900">
-            {t.footer.followTitle}
+          <h2 className="mt-8 text-[12px] uppercase tracking-[0.18em] text-ink">
+            {COPY.footer.follow}
           </h2>
-          <ul className="mt-4 space-y-2">
-            {SOCIAL_LABELS.map((social) => (
-              <li key={social.key}>
+          <ul className="mt-5 space-y-2.5">
+            {SOCIAL.map(([key, label]) => (
+              <li key={key}>
                 <a
-                  href={DEVELOPER.social[social.key]}
+                  href={DEVELOPER.social[key]}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink-700 transition hover:text-sea-600"
+                  className="text-ink-muted transition hover:text-clay"
                 >
-                  {social.label}
+                  {label}
                 </a>
               </li>
             ))}
@@ -133,11 +98,9 @@ export function Footer({
         </div>
       </div>
 
-      <div className="container-x mt-12 border-t border-sand-200 pt-6 text-sm text-ink-700">
-        <p>
-          © {new Date().getFullYear()} {DEVELOPER.name[locale]}. {t.footer.rights}
-        </p>
-      </div>
+      <p className="mt-12 border-t border-hair pt-6 text-sm text-ink-muted">
+        © {new Date().getFullYear()} {DEVELOPER.name}. {COPY.footer.rights}
+      </p>
     </footer>
   );
 }

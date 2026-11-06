@@ -1,42 +1,31 @@
 import type { Metadata } from 'next';
-import type { Locale } from '@/i18n/config';
-import { absolute, languageAlternates, pathFor, SITE_URL, type RouteKey } from './site';
 import { DEVELOPER } from '@/data/project';
+import { absolute, SITE_URL } from './site';
 
 // ============================================================
 // بناء الـmetadata لأي صفحة. كل الصفحات بتعدّي من هنا عشان
-// الـcanonical والـhreflang وOpenGraph يبقوا متسقين — أكتر غلطة
-// شائعة في مواقع بلغتين إن صفحة تنسى تقول لجوجل إن ليها أخت.
+// الـcanonical وOpenGraph يبقوا متسقين.
 // ============================================================
 
 export function buildMetadata({
-  locale,
-  route,
+  path,
   title,
   description,
 }: {
-  locale: Locale;
-  route: RouteKey;
+  path: string;
   title: string;
   description: string;
 }): Metadata {
-  const path = pathFor(locale, route);
-  const url = absolute(path);
-
   return {
     metadataBase: new URL(SITE_URL),
     title,
     description,
-    alternates: {
-      canonical: path,
-      languages: languageAlternates(route),
-    },
+    alternates: { canonical: path },
     openGraph: {
       type: 'website',
-      siteName: DEVELOPER.name[locale],
-      locale: locale === 'ar' ? 'ar_EG' : 'en_US',
-      alternateLocale: locale === 'ar' ? 'en_US' : 'ar_EG',
-      url,
+      siteName: DEVELOPER.name,
+      locale: 'en_US',
+      url: absolute(path),
       title,
       description,
     },

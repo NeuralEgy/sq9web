@@ -1,37 +1,37 @@
-import type { Dictionary } from '@/i18n';
-import { Section } from './Section';
+import { COPY } from '@/content/copy';
+import { Eyebrow, SectionTitle } from './Eyebrow';
 
-export function Story({ t }: { t: Dictionary }) {
+export function Story() {
   return (
-    <Section id="story" kicker={t.story.kicker} heading={t.story.heading}>
-      <div className="grid gap-10 lg:grid-cols-5 lg:gap-14">
-        <div className="space-y-5 text-lg leading-relaxed text-ink-700 lg:col-span-3">
-          <p>{t.story.body1}</p>
-          <p>{t.story.body2}</p>
+    <section className="shell py-24 lg:py-36">
+      <div className="grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-24">
+        <div>
+          <Eyebrow>{COPY.story.eyebrow}</Eyebrow>
+          <SectionTitle
+            lead={COPY.story.titleLead}
+            accent={COPY.story.titleAccent}
+            className="mt-6"
+          />
         </div>
 
-        <div className="lg:col-span-2">
-          <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-sea-600">
-            {t.story.pillarsHeading}
-          </h3>
-          <ol className="mt-5 space-y-5">
-            {t.story.pillars.map((pillar, index) => (
-              <li key={pillar.title} className="flex gap-4">
-                <span
-                  dir="ltr"
-                  className="mt-0.5 shrink-0 text-sm font-bold tabular-nums text-gold-600"
-                >
-                  {String(index + 1).padStart(2, '0')}
+        <div className="space-y-6 text-lg font-light leading-relaxed text-ink-soft">
+          {COPY.story.body.map((p) => (
+            <p key={p.slice(0, 24)}>{p}</p>
+          ))}
+
+          <div className="grid gap-x-10 gap-y-6 pt-4 sm:grid-cols-2">
+            {COPY.story.pillars.map((pillar, i) => (
+              <div key={pillar.title} className="border-t border-hair pt-4">
+                <span className="font-display text-sm text-clay">
+                  {String(i + 1).padStart(2, '0')}
                 </span>
-                <div>
-                  <p className="font-semibold text-ink-900">{pillar.title}</p>
-                  <p className="mt-1 text-ink-700">{pillar.body}</p>
-                </div>
-              </li>
+                <p className="mt-1 font-semibold text-ink">{pillar.title}</p>
+                <p className="mt-1 text-base text-ink-muted">{pillar.body}</p>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

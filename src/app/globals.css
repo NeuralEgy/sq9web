@@ -3,11 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  /* 🔴 ما تحطش هنا ‎--font-body: system-ui كقيمة احتياطية.
-     next/font بيحط المتغيّر ده على <html> عن طريق كلاس، وتعريف هنا
-     بيكسبه في الترتيب فالخط العربي ما بيتحمّلش خالص — الـ@font-face
-     بيفضل مسجّل بس محدش بيستدعيه، والصفحة بتتعرض بخط النظام.
-     البدائل أصلًا موجودة في tailwind.config.ts بعد var(--font-body). */
+  /* 🔴 ما تعرّفش --font-display ولا --font-ui هنا كقيمة احتياطية.
+     next/font بيحطهم على <html> عن طريق كلاس، وتعريف هنا بيكسبه
+     في الترتيب فالخطوط ما بتتحمّلش خالص — الـ@font-face بيفضل
+     مسجّل ومحدش بيستدعيه. البدائل في tailwind.config.ts. */
 
   html {
     scroll-behavior: smooth;
@@ -15,15 +14,13 @@
   }
 
   body {
-    @apply bg-sand-50 text-ink-800 antialiased;
+    @apply bg-cream text-ink antialiased;
   }
 
-  /* العربي محتاج ارتفاع سطر أعلى شوية عشان التشكيل والنقط */
-  html[lang^='ar'] body {
-    line-height: 1.85;
+  ::selection {
+    @apply bg-clay/20;
   }
 
-  /* أي حاجة بتتحرك: نحترم إعداد تقليل الحركة في النظام */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -37,21 +34,19 @@
   }
 }
 
-@layer utilities {
-  /* الشريط المتحرّك في اتجاه A — توقيع بصري موجود على موقعهم الحالي */
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-}
-
 @layer components {
-  /* عرض المحتوى الموحّد — هوامش الموبايل أولاً */
-  .container-x {
-    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  /* عرض المحتوى الموحّد */
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 lg:px-10;
+  }
+
+  /* العنوان الصغير فوق كل قسم */
+  .eyebrow {
+    @apply text-[12px] uppercase tracking-[0.26em] text-clay;
+  }
+
+  /* عنوان القسم — سيريف خفيف وكبير */
+  .section-title {
+    @apply font-display text-[clamp(2.2rem,5vw,3.6rem)] font-light leading-[1.08];
   }
 }

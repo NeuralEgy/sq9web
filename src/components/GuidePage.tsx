@@ -1,0 +1,112 @@
+import Link from 'next/link';
+import { COPY } from '@/content/copy';
+import type { Guide } from '@/content/guides';
+import { PROJECT, whatsappUrl } from '@/data/project';
+import { BreadcrumbJsonLd } from './JsonLd';
+import { Footer } from './Footer';
+import { Header } from './Header';
+import { WhatsAppFab } from './WhatsAppFab';
+
+// ============================================================
+// الشكل المشترك لصفحات الأدلة.
+//
+// كل صفحة بتجاوب على سؤال حقيقي من جوجل، وبتنتهي بنفس الخطوة:
+// زيارة أو واتساب. والهيدر والفوتر بياخدوا base="/" عشان لينكات
+// المراسي ترجّع الزائر للصفحة الرئيسية مش تقف مكانها.
+// ============================================================
+
+/** بيحوّل **كده** لـ<strong> — الحاجة الوحيدة اللي محتاجينها من الماركداون */
+function RichText({ text }: { text: string }) {
+  const parts = text.split(/\*\*(.+?)\*\*/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <strong key={i} className="font-semibold text-ink">
+            {part}
+          </strong>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
+export function GuidePage({ guide }: { guide: Guide }) {
+  const waText = `Hello, I would like details about ${PROJECT.name}`;
+
+  return (
+    <>
+      <BreadcrumbJsonLd pageName={guide.h1} path={`/${guide.slug}`} />
+      <Header base="/" />
+
+      <main>
+        <article className="shell py-14 lg:py-20">
+          {/* فتات الخبز المرئي — مش بس في البيانات المنظّمة */}
+          <nav aria-label="Breadcrumb" className="text-sm text-ink-muted">
+            <Link href="/" className="transition hover:text-clay">
+              {PROJECT.name}
+            </Link>
+            <span className="mx-2 text-ink-muted/50">/</span>
+            <span className="text-ink">{guide.h1}</span>
+          </nav>
+
+          <h1 className="mt-6 max-w-3xl font-display text-[clamp(2.6rem,7vw,5rem)] font-light leading-[1.02]">
+            {guide.h1}
+          </h1>
+          <p className="mt-7 max-w-2xl text-xl font-light leading-relaxed text-ink-soft">
+            {guide.intro}
+          </p>
+
+          <div className="mt-16 max-w-2xl space-y-12">
+            {guide.sections.map((section) => (
+              <section key={section.heading}>
+                <h2 className="font-display text-[clamp(1.7rem,3.5vw,2.3rem)] font-light">
+                  {section.heading}
+                </h2>
+                <div className="mt-5 space-y-4 text-lg font-light leading-relaxed text-ink-soft">
+                  {section.body.map((p, i) => (
+                    <p key={i}>
+                      <RichText text={p} />
+                    </p>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+
+          {/* نفس الخطوة في كل صفحة: زيارة أو واتساب */}
+          <div className="mt-16 max-w-2xl rounded-sm bg-ink px-7 py-12 text-cream sm:px-10">
+            <p className="text-[12px] uppercase tracking-[0.26em] text-gold">
+              {COPY.visit.eyebrow}
+            </p>
+            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.05]">
+              {COPY.visit.titleLead} <em className="italic text-gold">{COPY.visit.titleAccent}</em>
+            </h2>
+            <p className="mt-5 leading-relaxed text-cream/70">{COPY.pricing.closing}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/#visit"
+                className="rounded-full bg-gold px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] text-ink transition hover:bg-cream"
+              >
+                {COPY.nav.visit}
+              </Link>
+              <a
+                href={whatsappUrl(waText)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-cream/30 px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] transition hover:bg-cream/10"
+              >
+                {COPY.hero.ctaWhatsapp}
+              </a>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <Footer base="/" />
+      <WhatsAppFab />
+    </>
+  );
+}

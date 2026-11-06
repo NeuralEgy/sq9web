@@ -1,25 +1,46 @@
-// محتوى صفحات الهبوط — إنجليزي. نفس شكل النسخة العربية بالظبط.
-const landingEn = {
+// ============================================================
+// صفحات الهبوط.
+//
+// 🔴 دي مش صفحات «حشو كلمات». كل صفحة بتجاوب على سؤال حقيقي بيتكتب
+//    في جوجل، وبمحتوى مختلف فعلًا عن التانية. صفحات متشابهة بتتعامل
+//    كـdoorway pages وجوجل بيعاقب عليها.
+//
+//    وصفحة «التقسيط» بالذات بتشرح **الأسئلة اللي تسألها**، مش خطة
+//    سداد مش موجودة عندنا.
+// ============================================================
+
+export type Guide = {
+  slug: string;
+  navLabel: string;
+  title: string;
+  description: string;
+  h1: string;
+  intro: string;
+  sections: ReadonlyArray<{ heading: string; body: ReadonlyArray<string> }>;
+};
+
+export const GUIDES = {
   hurghadaApartments: {
+    slug: 'hurghada-apartments-for-sale',
     navLabel: 'Apartments for sale in Hurghada',
     title: 'Apartments for Sale in Hurghada — Aurora Palace, Magawish | Square9',
     description:
       'Apartments for sale in Hurghada, Magawish: studios, one and two bedrooms from 54 to 142 m². Fully finished, delivered 2028, 10% down. Book a visit to the show apartment.',
     h1: 'Apartments for sale in Hurghada',
     intro:
-      'Hurghada has become a place people live, not only a place they holiday. There is a real difference between a flat in a block on the seafront and a unit inside a compound with facilities, security and management. Aurora Palace is the second kind, in Magawish.',
+      'Hurghada has become a place people live, not only a place they holiday. There is a real difference between a flat in a block on the seafront and a home inside a compound with facilities, security and management. Aurora Palace is the second kind, in Magawish.',
     sections: [
       {
         heading: 'What is actually on offer',
         body: [
           'The project is 140 units across 6,000 m² — ground plus four floors, not a tower. Three types: studios from 54 to 80 m², one bedroom from 65 to 102 m², and two bedrooms from 101 to 142 m².',
-          'Every unit is fully finished and delivery is 2028. 40% of the land is landscape and swimming pools, with four pools, a restaurant, a gym and 24/7 security.',
+          'Every unit is fully finished and delivery is 2028. Forty per cent of the land is landscape and swimming pools, with four pools, a restaurant, a gym and 24/7 security.',
         ],
       },
       {
         heading: 'Why Magawish rather than downtown',
         body: [
-          'Downtown Hurghada is closer to the shops and the noise. Magawish is a calmer residential area, and even so the airport is ten minutes away, Senzo Mall ten, and the Marina fifteen.',
+          'Downtown Hurghada is closer to the shops and to the noise. Magawish is a calmer residential area, and even so the airport is ten minutes away, Senzo Mall ten, and the Marina fifteen.',
           'If you are buying to live, you gain quiet without being cut off. If you are buying to let, proximity to the airport is what moves holiday bookings.',
         ],
       },
@@ -34,6 +55,7 @@ const landingEn = {
   },
 
   magawish: {
+    slug: 'magawish',
     navLabel: 'Magawish area guide',
     title: 'Magawish, Hurghada — An Area Guide Before You Buy | Square9',
     description:
@@ -60,7 +82,7 @@ const landingEn = {
       {
         heading: 'Aurora Palace in Magawish',
         body: [
-          'The address is 9 Magawish District. The project is 140 units on 6,000 m², ground plus four floors, 60% buildings and 40% landscape and pools.',
+          'The address is 9 Magawish District. The project is 140 units on 6,000 m², ground plus four floors, sixty per cent buildings and forty per cent landscape and pools.',
           'The show apartment is built and can be visited by appointment.',
         ],
       },
@@ -68,6 +90,7 @@ const landingEn = {
   },
 
   offPlan: {
+    slug: 'off-plan-payment',
     navLabel: 'Instalments and buying off-plan',
     title: 'Apartments in Instalments in Hurghada — Buying Off-Plan and What to Ask | Square9',
     description:
@@ -79,7 +102,7 @@ const landingEn = {
       {
         heading: 'What buying off-plan means',
         body: [
-          'You are buying a unit that is still being built. At Aurora Palace, delivery is 2028. You sign a contract, pay a deposit, and pay instalments until handover.',
+          'You are buying a home that is still being built. At Aurora Palace, delivery is 2028. You sign a contract, pay a deposit, and pay instalments until handover.',
           'The gain is that entry is cheaper and easier than a finished unit. The trade is that you pay before you receive — so the contract and its dates are the only guarantee you hold.',
         ],
       },
@@ -87,7 +110,7 @@ const landingEn = {
         heading: 'Officially announced: 10% down',
         body: [
           'The only published payment figure for Aurora Palace is a **10% down payment**, alongside a general description of the plans as flexible.',
-          '🔴 We do not print a price or an instalment schedule here. Not because they are secret, but because they are confirmed by the sales office according to unit type, floor and area — and a number sitting on a web page may already have changed, while a buyer is making a decision worth millions on it.',
+          'We do not print a price or an instalment schedule here. Not because they are secret, but because they are confirmed by the sales office according to unit type, floor and area — and a number sitting on a web page may already have changed, while a buyer is making a decision worth millions on it.',
         ],
       },
       {
@@ -99,6 +122,8 @@ const landingEn = {
       },
     ],
   },
-} as const;
+} as const satisfies Record<string, Guide>;
 
-export default landingEn;
+export type GuideKey = keyof typeof GUIDES;
+
+export const GUIDE_LIST = Object.values(GUIDES) as ReadonlyArray<Guide>;

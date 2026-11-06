@@ -1,57 +1,62 @@
-import type { Locale } from '@/i18n/config';
-import type { Dictionary } from '@/i18n';
+import { COPY } from '@/content/copy';
 import { DISTANCES, LOCATION } from '@/data/project';
-import { num } from '@/lib/format';
-import { IconArrow, IconClock, IconPin } from './Icons';
-import { Section } from './Section';
+import { Eyebrow, SectionTitle } from './Eyebrow';
 
-export function LocationSection({ locale, t }: { locale: Locale; t: Dictionary }) {
+export function LocationSection() {
   return (
-    <Section
-      id="location"
-      kicker={t.location.kicker}
-      heading={t.location.heading}
-      lead={t.location.lead}
-    >
-      <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-        <div>
-          <p className="flex items-start gap-3 text-lg font-semibold text-ink-900">
-            <IconPin className="mt-1 h-5 w-5 shrink-0 text-sea-600" />
-            {LOCATION.address[locale]}
-          </p>
+    <section id="location" className="scroll-mt-28 py-24 lg:py-36">
+      <div className="shell">
+        <div className="grid gap-14 lg:grid-cols-2 lg:gap-24">
+          <div>
+            <Eyebrow>{COPY.location.eyebrow}</Eyebrow>
+            <SectionTitle
+              lead={COPY.location.titleLead}
+              accent={COPY.location.titleAccent}
+              className="mt-6"
+            />
+            <p className="mt-6 max-w-md text-lg font-light leading-relaxed text-ink-soft">
+              {COPY.location.lead}
+            </p>
 
-          <a
-            href={LOCATION.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sea-600 transition hover:text-sea-800"
-          >
-            {t.location.directions}
-            <IconArrow className="h-4 w-4 rtl:-scale-x-100" />
-          </a>
+            <p className="mt-8 font-display text-xl">{LOCATION.address}</p>
 
-          {/* فقرة للبحث — الكلمات اللي العميل بيكتبها فعلًا في جوجل */}
-          <p className="mt-7 leading-relaxed text-ink-700">{t.location.seoNote}</p>
-        </div>
+            <a
+              href={LOCATION.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block text-[12px] uppercase tracking-[0.16em] text-clay"
+            >
+              {COPY.location.directions} →
+            </a>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-sea-600">
-            {t.location.distancesHeading}
-          </h3>
-          <ul className="mt-5 divide-y divide-sand-200 border-y border-sand-200">
-            {DISTANCES.map((entry) => (
-              <li key={entry.place.en} className="flex items-center justify-between gap-4 py-3.5">
-                <span className="text-ink-900">{entry.place[locale]}</span>
-                <span className="inline-flex shrink-0 items-center gap-1.5 text-ink-700">
-                  <IconClock className="h-4 w-4 text-sea-400" />
-                  <span dir="ltr">{num(entry.minutes, locale)}</span>
-                  <span>{t.common.minutes}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
+            {/* فقرة للبحث — الكلمات اللي العميل بيكتبها فعلًا في جوجل */}
+            <p className="mt-8 max-w-md leading-relaxed text-ink-muted">
+              {COPY.location.seoNote}
+            </p>
+          </div>
+
+          <div className="lg:pt-4">
+            <h3 className="text-[12px] uppercase tracking-[0.18em] text-ink-muted">
+              {COPY.location.distancesTitle}
+            </h3>
+            <dl className="mt-5">
+              {DISTANCES.map((d) => (
+                <div
+                  key={d.place}
+                  className="flex items-baseline justify-between gap-6 border-t border-hair py-5"
+                >
+                  <dt className="text-lg">{d.place}</dt>
+                  <dd className="font-display text-2xl font-light">
+                    {d.minutes}{' '}
+                    <span className="text-base text-ink-muted">{COPY.common.minutes}</span>
+                  </dd>
+                </div>
+              ))}
+              <div className="border-t border-hair" />
+            </dl>
+          </div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

@@ -1,9 +1,12 @@
-import { LOCALES, type Locale } from '@/i18n/config';
+import { GUIDE_LIST } from '@/content/guides';
 
 // ============================================================
 // إعدادات الموقع المشتركة — المصدر الوحيد للعناوين المطلقة.
-// أي حتة محتاجة URL كامل (canonical · hreflang · sitemap · JSON-LD · OG)
+// أي حتة محتاجة URL كامل (canonical · sitemap · JSON-LD · OG)
 // بتعدّي من هنا، عشان ما يحصلش اختلاف بين واحدة والتانية.
+//
+// الموقع إنجليزي بلغة واحدة، فمفيش بادئة لغة ومفيش hreflang —
+// المسارات نضيفة: / و /magawish وهكذا.
 // ============================================================
 
 /** بيتشال منه أي / في الآخر عشان ما يحصلش // في النص */
@@ -16,29 +19,5 @@ export function absolute(path: string): string {
   return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
 }
 
-/**
- * صفحات الموقع. المسار بيتكوّن من البادئة (/ar أو /en) + الـslug.
- * الـslug إنجليزي في اللغتين عن قصد: أسهل في النسخ واللصق على واتساب،
- * وما بيتحوّلش لرموز %D8%B4 في الشير.
- */
-export const ROUTES = {
-  home: '',
-  hurghadaApartments: '/hurghada-apartments-for-sale',
-  magawish: '/magawish',
-  offPlan: '/off-plan-payment',
-} as const;
-
-export type RouteKey = keyof typeof ROUTES;
-
-export function pathFor(locale: Locale, route: RouteKey): string {
-  return `/${locale}${ROUTES[route]}`;
-}
-
-/** خريطة hreflang لصفحة واحدة بكل لغاتها */
-export function languageAlternates(route: RouteKey): Record<string, string> {
-  const entries: Record<string, string> = {};
-  for (const locale of LOCALES) entries[locale] = pathFor(locale, route);
-  // x-default بيروح للإنجليزي: الزائر اللي مش عربي ولا إنجليزي يقرا الإنجليزي
-  entries['x-default'] = pathFor('en', route);
-  return entries;
-}
+/** كل مسارات الموقع — الرئيسية وصفحات الأدلة */
+export const ALL_PATHS: ReadonlyArray<string> = ['/', ...GUIDE_LIST.map((g) => `/${g.slug}`)];

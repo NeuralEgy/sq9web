@@ -1,84 +1,70 @@
-import type { Locale } from '@/i18n/config';
-import type { Dictionary } from '@/i18n';
-import { PROJECT, whatsappUrl } from '@/data/project';
-import { num, year } from '@/lib/format';
-import { IconWhatsapp } from './Icons';
+import Image from 'next/image';
+import { COPY } from '@/content/copy';
+import { IMAGES, PROJECT, whatsappUrl } from '@/data/project';
+import { Eyebrow } from './Eyebrow';
 
-// ⚠️ مفيش صور من العميل لحد دلوقتي، فالهيرو تدرّج لوني مش صورة.
-//    ده مقصود مش مؤقت وحش: بيفتح فورًا على موبايل جاي من إعلان (مفيش صورة تتحمّل)،
-//    ولما العميل يبعت الصور بتتحط كـbackground هنا من غير ما يتغيّر أي حاجة تانية.
-export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
-  const waText =
-    locale === 'ar'
-      ? `السلام عليكم، حابب أعرف تفاصيل ${PROJECT.name}`
-      : `Hello, I would like details about ${PROJECT.name}`;
+const WA_TEXT = `Hello, I would like details about ${PROJECT.name}`;
+
+// النص فوق والصورة تحته — مش النص فوق الصورة.
+// السبب: نص فوق صورة دايمًا بيحتاج طبقة تغميق، والطبقة بتاكل من
+// الرندر. هنا النص مقروء ١٠٠٪ والصورة بتاخد حقها كاملة.
+export function Hero() {
+  const stats: Array<[string, string]> = [
+    [String(PROJECT.totalUnits), COPY.project.labels.units],
+    [`${PROJECT.areaMinM2} – ${PROJECT.areaMaxM2} ${COPY.common.sqm}`, COPY.project.labels.areas],
+    [`${PROJECT.landAreaM2.toLocaleString('en-US')} ${COPY.common.sqm}`, COPY.project.labels.land],
+    [String(PROJECT.deliveryYear), COPY.project.labels.delivery],
+  ];
 
   return (
-    <section className="relative overflow-hidden bg-ink-900 text-sand-50">
-      {/* طبقة ضوء خفيفة — بتدّي عمق من غير صورة */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_70%_at_75%_10%,rgba(31,106,128,0.55),transparent_60%),radial-gradient(60%_60%_at_10%_90%,rgba(201,162,74,0.22),transparent_65%)]"
-      />
+    <section className="shell pt-10 lg:pt-16">
+      <Eyebrow>{COPY.hero.eyebrow}</Eyebrow>
 
-      <div className="container-x relative py-20 sm:py-28">
-        <span className="inline-flex items-center gap-2 rounded-full border border-gold-400/40 bg-gold-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-gold-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
-          {t.hero.badge}
-        </span>
+      <h1 className="mt-8 max-w-4xl font-display text-[clamp(3rem,9vw,7.5rem)] font-light leading-[0.95]">
+        {COPY.hero.titleLead} <em className="italic text-clay">{COPY.hero.titleAccent}</em>
+      </h1>
 
-        <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-sea-400">
-          {t.hero.eyebrow}
+      <div className="mt-10 grid gap-8 border-t border-hair pt-8 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+        <p className="max-w-xl text-xl font-light leading-relaxed text-ink-soft">
+          {COPY.hero.lead}
         </p>
-
-        <h1 className="mt-3 text-5xl font-bold tracking-tight sm:text-7xl">{t.hero.title}</h1>
-        <p className="mt-3 text-xl text-gold-400 sm:text-2xl">{t.hero.subtitle}</p>
-
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-sand-200">{t.hero.lead}</p>
-
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-wrap items-start gap-3 lg:justify-end">
           <a
             href="#visit"
-            className="rounded-full bg-gold-400 px-7 py-3.5 text-center font-semibold text-ink-900 transition hover:bg-gold-500"
+            className="rounded-full bg-ink px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] text-cream transition hover:bg-clay"
           >
-            {t.hero.ctaVisit}
+            {COPY.hero.ctaVisit}
           </a>
           <a
-            href={whatsappUrl(waText)}
+            href={whatsappUrl(WA_TEXT)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-sand-50/30 px-7 py-3.5 font-semibold text-sand-50 transition hover:bg-sand-50/10"
+            className="rounded-full border border-ink/25 px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] transition hover:border-clay hover:text-clay"
           >
-            <IconWhatsapp className="h-5 w-5" />
-            {t.hero.ctaWhatsapp}
+            {COPY.hero.ctaWhatsapp}
           </a>
         </div>
-
-        {/* أرقام سريعة تحت الزراير — أول حاجة عين الزائر بتلقطها */}
-        <dl className="mt-12 grid max-w-2xl grid-cols-2 gap-x-6 gap-y-5 border-t border-sand-50/15 pt-8 sm:grid-cols-4">
-          <HeroStat value={num(PROJECT.totalUnits, locale)} label={t.stats.units} />
-          <HeroStat
-            value={`${num(PROJECT.areaMinM2, locale)}–${num(PROJECT.areaMaxM2, locale)}`}
-            label={`${t.stats.areas} (${t.common.sqm})`}
-          />
-          <HeroStat value={num(PROJECT.landAreaM2, locale)} label={`${t.stats.land} (${t.common.sqm})`} />
-          <HeroStat value={year(PROJECT.deliveryYear, locale)} label={t.stats.delivery} />
-        </dl>
       </div>
-    </section>
-  );
-}
 
-function HeroStat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <dt className="sr-only">{label}</dt>
-      <dd>
-        <span dir="ltr" className="block text-2xl font-bold text-sand-50 sm:text-3xl">
-          {value}
-        </span>
-        <span className="mt-1 block text-sm text-sand-200/80">{label}</span>
-      </dd>
-    </div>
+      <div className="relative mt-14 aspect-[16/9] w-full overflow-hidden rounded-sm lg:mt-20">
+        <Image
+          src={IMAGES.sunsetPool}
+          alt={`${PROJECT.name} at sunset, Magawish, Hurghada`}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+
+      <dl className="mt-10 grid grid-cols-2 gap-y-8 border-b border-hair pb-12 lg:grid-cols-4">
+        {stats.map(([value, label]) => (
+          <div key={label}>
+            <dd className="font-display text-[clamp(1.9rem,4vw,2.9rem)] font-light">{value}</dd>
+            <dt className="mt-1 text-[12px] uppercase tracking-[0.18em] text-ink-muted">{label}</dt>
+          </div>
+        ))}
+      </dl>
+    </section>
   );
 }

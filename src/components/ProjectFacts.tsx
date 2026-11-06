@@ -1,64 +1,69 @@
-import type { Locale } from '@/i18n/config';
-import type { Dictionary } from '@/i18n';
-import { PAYMENT, PROJECT } from '@/data/project';
-import { areaRange, num, year } from '@/lib/format';
-import { Section } from './Section';
+import Image from 'next/image';
+import { COPY } from '@/content/copy';
+import { IMAGES, PAYMENT, PROJECT } from '@/data/project';
+import { Eyebrow, SectionTitle } from './Eyebrow';
 
 // جدول الحقائق. كل قيمة هنا جاية من src/data/project.ts —
 // 🔴 ممنوع يتكتب رقم مباشرة في الملف ده.
-export function ProjectFacts({ locale, t }: { locale: Locale; t: Dictionary }) {
-  const rows: Array<{ label: string; value: string }> = [
-    { label: t.project.labels.units, value: num(PROJECT.totalUnits, locale) },
-    {
-      label: t.project.labels.areas,
-      value: areaRange(PROJECT.areaMinM2, PROJECT.areaMaxM2, locale, t.common.sqm),
-    },
-    {
-      label: t.project.labels.land,
-      value: `${num(PROJECT.landAreaM2, locale)} ${t.common.sqm}`,
-    },
-    { label: t.project.labels.buildings, value: `${num(PROJECT.landSplit.buildingsPercent, locale)}%` },
-    {
-      label: t.project.labels.landscape,
-      value: `${num(PROJECT.landSplit.landscapeAndPoolsPercent, locale)}%`,
-    },
-    {
-      label: t.project.labels.structure,
-      value:
-        locale === 'ar'
-          ? `أرضي + ${num(PROJECT.floors.above, locale)} أدوار`
-          : `Ground + ${num(PROJECT.floors.above, locale)} floors`,
-    },
-    { label: t.project.labels.delivery, value: year(PROJECT.deliveryYear, locale) },
-    { label: t.project.labels.finishing, value: PROJECT.finishing[locale] },
-    { label: t.project.labels.contract, value: PROJECT.contract[locale] },
+export function ProjectFacts() {
+  const l = COPY.project.labels;
+  const rows: Array<[string, string]> = [
+    [l.units, String(PROJECT.totalUnits)],
+    [l.areas, `${PROJECT.areaMinM2} – ${PROJECT.areaMaxM2} ${COPY.common.sqm}`],
+    [l.land, `${PROJECT.landAreaM2.toLocaleString('en-US')} ${COPY.common.sqm}`],
+    [l.split, `${PROJECT.buildingsPercent}% / ${PROJECT.landscapePercent}%`],
+    [l.structure, `Ground + ${PROJECT.floorsAbove} floors`],
+    [l.delivery, String(PROJECT.deliveryYear)],
+    [l.finishing, PROJECT.finishing],
+    [l.contract, PROJECT.contract],
     // 🟢 الرقم الوحيد المنشور عن السداد
-    {
-      label: t.project.labels.downPayment,
-      value: `${num(PAYMENT.downPaymentPercent, locale)}%`,
-    },
+    [l.downPayment, `${PAYMENT.downPaymentPercent}%`],
   ];
 
   return (
-    <Section id="project" kicker={t.project.kicker} heading={t.project.heading} lead={t.project.lead} tone="muted">
-      <dl className="grid gap-x-10 gap-y-0 sm:grid-cols-2">
-        {rows.map((row) => (
-          <div
-            key={row.label}
-            className="flex items-baseline justify-between gap-4 border-b border-sand-200 py-3.5"
-          >
-            <dt className="text-ink-700">{row.label}</dt>
-            <dd dir="ltr" className="text-end font-semibold text-ink-900">
-              {row.value}
-            </dd>
+    <section id="project" className="scroll-mt-28 bg-sand py-24 lg:py-36">
+      <div className="shell">
+        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm lg:aspect-[4/5]">
+            <Image
+              src={IMAGES.aerialPool}
+              alt={`Aerial view of the pools at ${PROJECT.name}`}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
-        ))}
-      </dl>
 
-      {/* شفافية عن البيع على الخريطة — بتبني ثقة بدل ما العميل يكتشفها بنفسه */}
-      <p className="mt-8 max-w-2xl rounded-2xl border border-sea-400/30 bg-sea-400/5 p-5 leading-relaxed text-ink-700">
-        {t.project.offPlanNote}
-      </p>
-    </Section>
+          <div>
+            <Eyebrow>{COPY.project.eyebrow}</Eyebrow>
+            <SectionTitle
+              lead={COPY.project.titleLead}
+              accent={COPY.project.titleAccent}
+              className="mt-6"
+            />
+            <p className="mt-6 max-w-md text-lg font-light leading-relaxed text-ink-soft">
+              {COPY.project.lead}
+            </p>
+
+            <dl className="mt-10">
+              {rows.map(([label, value]) => (
+                <div
+                  key={label}
+                  className="flex items-baseline justify-between gap-6 border-t border-hair py-4"
+                >
+                  <dt className="text-ink-muted">{label}</dt>
+                  <dd className="font-display text-xl">{value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            {/* شفافية عن البيع على الخريطة — بتبني ثقة بدل ما العميل يكتشفها بنفسه */}
+            <p className="mt-8 border-s-2 border-clay ps-5 leading-relaxed text-ink-soft">
+              {COPY.project.offPlanNote}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

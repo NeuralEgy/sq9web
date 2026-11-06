@@ -29,6 +29,10 @@ export const COPY = {
     philosophy: 'Philosophy',
     strengths: 'What We Show',
     projects: 'Projects',
+    contact: 'Contact',
+
+    // صفحات مستقلة
+    faq: 'Questions',
 
     // أقسام صفحة المشروع
     project: 'The Project',
@@ -133,6 +137,35 @@ export const COPY = {
       },
     },
 
+    // قسم مختصر على الرئيسية بيودّي على /faq. مش نسخة من الصفحة —
+    // أربع أسئلة بس، وكلها من النوع اللي إجابته «مش عندنا»، لأن
+    // دي اللي بتفرّقنا عن أي موقع تاني الزائر فتحه النهاردة.
+    questions: {
+      eyebrow: 'Before you ask',
+      titleLead: 'The four questions',
+      titleAccent: 'we cannot answer',
+      lead: 'Every one of these has a number waiting for you on somebody else’s website. Here is why it is not on ours.',
+      items: [
+        {
+          q: 'How much is it?',
+          a: 'Not published. The price depends on floor and area, and it is confirmed per unit in writing.',
+        },
+        {
+          q: 'What is the payment plan?',
+          a: 'Only the 10% down payment is published. The schedule comes from the sales office.',
+        },
+        {
+          q: 'What rental yield can I expect?',
+          a: 'No yield figure exists for an unbuilt project. Any number you are shown is a projection.',
+        },
+        {
+          q: 'Which units are left?',
+          a: 'Availability changes daily. A list printed here would be wrong before you read it.',
+        },
+      ],
+      cta: 'All the questions, answered',
+    },
+
     connect: {
       eyebrow: 'Talk to us',
       titleLead: 'Come and see',
@@ -141,6 +174,53 @@ export const COPY = {
       ctaVisit: 'Book a visit',
       ctaWhatsapp: 'WhatsApp',
     },
+  },
+
+  // ============================================================
+  // صفحة /faq
+  // ============================================================
+  faqPage: {
+    eyebrow: 'Questions',
+    title: 'The questions people',
+    titleAccent: 'actually ask',
+    intro:
+      'Grouped by what you are trying to find out. Where the answer is a published fact, it is here. Where it is not, this page says so plainly and tells you who to ask — because an invented answer is worse than no answer when you are buying off-plan.',
+    seoTitle: 'Aurora Palace, Hurghada — Questions and Honest Answers | Square9',
+    seoDescription:
+      'Straight answers about Aurora Palace in Magawish, Hurghada: sizes, 2028 delivery, the published 10% down payment, the show apartment — and what is not published, said plainly.',
+    stillAsking: 'Still have a question?',
+    stillAskingBody:
+      'Message us on WhatsApp, or bring it to the show apartment and ask for the answer in writing.',
+  },
+
+  // ============================================================
+  // صفحة /contact
+  // ============================================================
+  contactPage: {
+    eyebrow: 'Contact',
+    title: 'Talk to',
+    titleAccent: 'Square9',
+    intro:
+      'One number, one inbox, one address. The same number answers calls and WhatsApp.',
+    seoTitle: 'Contact Square9 Developments — Hurghada, Red Sea',
+    seoDescription:
+      'Reach Square9 Developments in Magawish, Hurghada: phone, WhatsApp, email and address, and the four daily appointment times at the Aurora Palace show apartment.',
+    labels: {
+      phone: 'Phone',
+      whatsapp: 'WhatsApp',
+      email: 'Email',
+      office: 'Office',
+      slots: 'Show apartment',
+      follow: 'Follow',
+    },
+    slotsNote:
+      'Four appointment times a day at the Aurora Palace show apartment, with no obligation.',
+    bookCta: 'Book a visit',
+    mapCta: 'Open on the map',
+    // 🔴 الفورم مش هنا عن قصد — نسخة تانية منه معناها مسار تاني
+    //    بيكتب في جدول visits.
+    formNote:
+      'Booking a visit takes a date and a time, so the form lives with the project rather than here.',
   },
 
   // ============================================================

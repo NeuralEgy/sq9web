@@ -8,6 +8,7 @@ import { Vision } from '@/components/Vision';
 import { Philosophy } from '@/components/Philosophy';
 import { Strengths } from '@/components/Strengths';
 import { ProjectsIndex } from '@/components/ProjectsIndex';
+import { Questions } from '@/components/Questions';
 import { Connect } from '@/components/Connect';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFab } from '@/components/WhatsAppFab';
@@ -27,7 +28,8 @@ export const metadata: Metadata = buildMetadata({
 // بالترتيب ده:
 //
 //   مين إحنا  →  بنؤمن بإيه  →  بنقرّر إزاي  →  نقدر نوريك إيه
-//   (وإيه اللي مش نقدر)  →  بنبني إيه  →  اتكلم معانا
+//   (وإيه اللي مش نقدر)  →  بنبني إيه  →  وإيه اللي مش هنجاوبه
+//   →  اتكلم معانا
 //
 // 🔴 مفيش قسم «مجلس الإدارة». مش نسيان: مفيش ولا اسم منشور ولا
 //    متسلّم من العميل، وقسم فاضي أو أسامي مخترعة أسوأ من مفيش قسم.
@@ -53,6 +55,7 @@ export default function HomePage() {
         <Philosophy />
         <Strengths />
         <ProjectsIndex />
+        <Questions />
         <Connect />
       </main>
 

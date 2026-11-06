@@ -18,6 +18,7 @@
 
 import { COPY } from '@/content/copy';
 import { PROJECT_PATH } from '@/data/projects/aurora-palace';
+import { ROUTES } from './routes';
 
 export type NavLink = { href: string; label: string };
 
@@ -32,6 +33,8 @@ export function navLinks(variant: NavVariant, base = ''): ReadonlyArray<NavLink>
       { href: `${base}#philosophy`, label: COPY.nav.philosophy },
       { href: `${base}#strengths`, label: COPY.nav.strengths },
       { href: `${base}#projects`, label: COPY.nav.projects },
+      // 🔴 دي صفحة مستقلة مش مرساة، فمالهاش base — بتشتغل من أي صفحة
+      { href: ROUTES.contact, label: COPY.nav.contact },
     ];
   }
 
@@ -43,7 +46,11 @@ export function navLinks(variant: NavVariant, base = ''): ReadonlyArray<NavLink>
   ];
 }
 
-/** لينكات الفوتر = لينكات الهيدر + الزيارة */
+/** لينكات الفوتر = لينكات الهيدر + الأسئلة + الزيارة */
 export function footerLinks(variant: NavVariant, base = ''): ReadonlyArray<NavLink> {
-  return [...navLinks(variant, base), { href: VISIT_HREF, label: COPY.nav.visit }];
+  return [
+    ...navLinks(variant, base),
+    { href: ROUTES.faq, label: COPY.nav.faq },
+    { href: VISIT_HREF, label: COPY.nav.visit },
+  ];
 }

@@ -1,3 +1,4 @@
+import { FAQ_ITEMS } from '@/content/faq';
 import { DEVELOPER, HEAD_OFFICE } from '@/data/company';
 import {
   AMENITIES,
@@ -145,6 +146,39 @@ export function AuroraJsonLd() {
           },
           breadcrumb(PROJECT.name, PROJECT_PATH),
         ],
+      }}
+    />
+  );
+}
+
+/**
+ * صفحة الأسئلة.
+ *
+ * 🔴 FAQPage نوع جوجل بيعرضه في النتايج نفسها، يعني الإجابات دي
+ *    ممكن تظهر لناس عمرها ما فتحت الموقع. وده بالظبط اللي إحنا
+ *    عايزينه هنا: «السعر مش منشور» تتقال في صفحة النتايج.
+ *
+ *    الشرط إن النص يطابق اللي على الصفحة حرفيًا — جوجل بيعاقب على
+ *    إجابة في البيانات المنظّمة مش موجودة للزائر. عشان كده الاتنين
+ *    بيقروا من src/content/faq.ts، ومفيش نص مكتوب تاني هنا.
+ *
+ *    و**بنشيل الـ markdown** من الإجابة قبل ما تتحط: النجمتين
+ *    بتوصل لجوجل كنجمتين، مش كخط عريض.
+ */
+export function FaqJsonLd() {
+  return (
+    <JsonLdScript
+      data={{
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: FAQ_ITEMS.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer.join(' ').replace(/\*\*(.+?)\*\*/g, '$1'),
+          },
+        })),
       }}
     />
   );

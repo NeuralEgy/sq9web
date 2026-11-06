@@ -1,5 +1,6 @@
 import { GUIDE_LIST } from '@/content/guides';
 import { PROJECT_PATHS } from '@/data/projects';
+import { STATIC_PATHS } from './routes';
 
 // ============================================================
 // إعدادات الموقع المشتركة — المصدر الوحيد للعناوين المطلقة.
@@ -41,5 +42,6 @@ export function absolute(path: string): string {
 export const ALL_PATHS: ReadonlyArray<string> = [
   '/',
   ...PROJECT_PATHS,
+  ...STATIC_PATHS,
   ...GUIDE_LIST.map((g) => `/${g.slug}`),
 ];

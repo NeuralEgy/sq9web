@@ -7,6 +7,7 @@ import { VISIT_HREF } from '@/lib/nav';
 import { BreadcrumbJsonLd } from './JsonLd';
 import { Footer } from './Footer';
 import { Header } from './Header';
+import { RichText } from './RichText';
 import { WhatsAppFab } from './WhatsAppFab';
 
 // ============================================================
@@ -20,24 +21,6 @@ import { WhatsAppFab } from './WhatsAppFab';
 //    المشروع، مش على الرئيسية. لو سابوا "/" الزائر بيروح للرئيسية
 //    وبيدوّر على قسم مش موجود هناك.
 // ============================================================
-
-/** بيحوّل **كده** لـ<strong> — الحاجة الوحيدة اللي محتاجينها من الماركداون */
-function RichText({ text }: { text: string }) {
-  const parts = text.split(/\*\*(.+?)\*\*/g);
-  return (
-    <>
-      {parts.map((part, i) =>
-        i % 2 === 1 ? (
-          <strong key={i} className="font-semibold text-ink">
-            {part}
-          </strong>
-        ) : (
-          part
-        ),
-      )}
-    </>
-  );
-}
 
 export function GuidePage({ guide }: { guide: Guide }) {
   const waText = `Hello, I would like details about ${PROJECT.name}`;

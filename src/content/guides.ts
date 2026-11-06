@@ -127,6 +127,88 @@ export const GUIDES = {
       },
     ],
   },
+  showApartment: {
+    slug: 'show-apartment-hurghada',
+    navLabel: 'Visiting a show apartment',
+    title: 'Visiting a Show Apartment in Hurghada — What to Check | Square9',
+    description:
+      'What to actually look at, measure and ask when you visit a show apartment in Hurghada before buying off-plan — and which answers to insist on in writing.',
+    h1: 'Visiting a show apartment',
+    intro:
+      'When the building will not exist until 2028, the show apartment is the only physical thing you can judge. Most people walk through it in ten minutes and come out with an impression. That is a shame, because it is the one hour in the whole purchase where you hold the evidence in your hands.',
+    sections: [
+      {
+        heading: 'What the show apartment is actually evidence of',
+        body: [
+          'It is evidence of a finish standard. Not of your unit, not of your floor, not of your view — of the quality of work the developer considers acceptable to show you.',
+          'So look past the furniture, which is staged and is not included. Open a cupboard door and feel the hinge. Run your hand along where the skirting meets the floor. Look at the grout line in the bathroom and the gap around the window frame. Those are the places where corners get cut, and they are the places nobody photographs.',
+        ],
+      },
+      {
+        heading: 'Take a tape measure, and use it',
+        body: [
+          'Measure a room and compare it to the area you were quoted. Ask whether the figure you were given is the built-up area or the net internal area — the difference between those two is real money, and the answer should be the same in the contract as it is out loud.',
+          'Measure the ceiling height. Stand in the middle of the living area and see whether a sofa and a dining table would both fit, honestly. At Aurora Palace the three types run **54 to 80 m²** for a studio, **65 to 102 m²** for one bedroom and **101 to 142 m²** for two — a wide range inside each type, so which end of it you are buying matters.',
+        ],
+      },
+      {
+        heading: 'Go at an awkward time',
+        body: [
+          'Everyone visits at eleven in the morning, when the light is flattering and the site is quiet. Ask for the late afternoon slot instead and you will learn more: where the sun actually lands, how warm the rooms get, what the place sounds like when people are around.',
+          'The appointment times are 9am, 11am, 2pm and 4pm. The 4pm one tells you the most.',
+        ],
+      },
+      {
+        heading: 'What to leave with, in writing',
+        body: [
+          'A visit that ends in a handshake and a verbal number has achieved nothing. Ask for all of this on paper or by email: the price of a specific unit by floor and area · the deposit and the instalment dates to handover · whether anything falls due on delivery · maintenance charges, how they are calculated and when they start · the handover date as the contract words it, and the clause that applies if it slips · the finish specification in detail rather than the phrase "fully finished" · the terms for reselling before handover · the form of contract and how registration works.',
+          'You are allowed to ask for all of it. A developer who answers every one of those in writing is telling you something, and so is one who does not.',
+        ],
+      },
+    ],
+  },
+
+  unitSize: {
+    slug: 'studio-or-two-bedroom-hurghada',
+    navLabel: 'Studio, one bed or two?',
+    title: 'Studio, One Bedroom or Two in Hurghada — How to Choose | Square9',
+    description:
+      'Choosing between a studio, a one bedroom and a two bedroom apartment in Hurghada: what each size actually gives you, who each suits, and what changes if you intend to let it.',
+    h1: 'Studio, one bedroom or two?',
+    intro:
+      'This is usually decided by budget alone, and then regretted. The three sizes are not the same product at different prices — they suit genuinely different lives, and if you are letting, they attract different guests entirely.',
+    sections: [
+      {
+        heading: 'The three sizes at Aurora Palace',
+        body: [
+          'A **studio** runs 54 to 80 m²: one room, a kitchen and a terrace. A **one bedroom** runs 65 to 102 m²: a separate bedroom and a full living room. **Two bedrooms** run 101 to 142 m², which is room for a family that is staying rather than visiting.',
+          'Notice the overlap. A large studio at 80 m² is bigger than a small one bedroom at 65 m². Floor area alone will mislead you — what changes between the types is whether there is a door between the bed and everything else.',
+        ],
+      },
+      {
+        heading: 'If you are buying to live in it',
+        body: [
+          'A studio works for one person, or two who are out most of the day. It stops working the moment someone needs to sleep while someone else is awake.',
+          'One bedroom is the honest minimum for a couple, and it is the size that handles a visiting guest without anyone resenting it. Two bedrooms is for a family, or for anyone who works from home and needs a door they can close.',
+          'Be realistic about the second bedroom rather than aspirational. If it would be used four weekends a year, you are paying for storage.',
+        ],
+      },
+      {
+        heading: 'If you are buying to let',
+        body: [
+          'Studios and one bedrooms turn over faster and suit couples and short stays. Two bedrooms draw families, who book longer and tend to return to the same place.',
+          'What you should not do is pick a size based on a yield figure. No yield or occupancy numbers are published for this project and we will not invent any — anything you are quoted for a building that does not exist yet is a projection. Ask whoever gives you one what it is based on.',
+        ],
+      },
+      {
+        heading: 'What the floor does to the decision',
+        body: [
+          'The building is ground plus four floors. A ground floor unit near the gardens is a different proposition from a top floor one, for noise, for privacy and for what you see from the terrace — and forty per cent of this site is landscape and water, so what your terrace faces is worth caring about.',
+          'Floor allocation and what it costs are confirmed by the sales office per unit. Walk the show apartment first and decide which size you want; then ask what is available on which floor.',
+        ],
+      },
+    ],
+  },
 } as const satisfies Record<string, Guide>;
 
 export type GuideKey = keyof typeof GUIDES;

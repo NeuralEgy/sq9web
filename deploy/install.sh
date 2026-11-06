@@ -105,8 +105,24 @@ echo "http://127.0.0.1:$PORT/ -> $code"
 [ "$code" = "200" ] || { echo "ERROR: app did not answer 200" >&2; exit 1; }
 
 # ---------- 7 · nginx ----------
+# 🔴 ما بنكتبش فوق الملف لو موجود. certbot بيعدّل الملف ده نفسه —
+#    بيزوّد فيه listen 443 وسطور الشهادة وتحويل 80 على 443. نسخة
+#    الريبو فيها بورت 80 بس، فـcp فوقه كان هيمسح الـTLS ويرجّع
+#    الدومين لبلوك الرفض الافتراضي. الـHTTPS كان هيقع والسكربت
+#    هيقول "done" وهو مبسوط.
+#
+#    لو عايز تطبّق تغيير على بلوك nginx بعد certbot، عدّل الملف
+#    اللي على السيرفر باليد، أو امسحه وشغّل السكربت ده وبعديه certbot.
 say "nginx"
-cp "$DIR/deploy/nginx-sq9web.conf" /etc/nginx/sites-available/sq9web
+if [ -f /etc/nginx/sites-available/sq9web ]; then
+  echo "/etc/nginx/sites-available/sq9web already exists - left untouched"
+  if grep -q "managed by Certbot" /etc/nginx/sites-available/sq9web; then
+    echo "  (it carries certbot's TLS lines - overwriting it would break HTTPS)"
+  fi
+else
+  cp "$DIR/deploy/nginx-sq9web.conf" /etc/nginx/sites-available/sq9web
+  echo "installed /etc/nginx/sites-available/sq9web"
+fi
 ln -sfn /etc/nginx/sites-available/sq9web /etc/nginx/sites-enabled/sq9web
 nginx -t
 systemctl reload nginx

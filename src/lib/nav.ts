@@ -45,6 +45,7 @@ export function navLinks(variant: NavVariant, base = ''): ReadonlyArray<NavLink>
       // دي مرساة على الرئيسية، فمحتاجة base
       { href: `${base}#projects`, label: COPY.nav.projects },
       { href: ROUTES.buying, label: COPY.nav.buying },
+      { href: ROUTES.sales, label: COPY.nav.sales },
       { href: ROUTES.contact, label: COPY.nav.contact },
     ];
   }
@@ -67,6 +68,7 @@ export function sitePages(): ReadonlyArray<NavLink> {
     ...(HAS_LEADERSHIP ? [{ href: ROUTES.leadership, label: COPY.nav.leadership }] : []),
     { href: PROJECT_PATH, label: COPY.nav.project },
     { href: ROUTES.buying, label: COPY.nav.buying },
+    { href: ROUTES.sales, label: COPY.nav.sales },
     { href: ROUTES.faq, label: COPY.nav.faq },
     { href: ROUTES.contact, label: COPY.nav.contact },
     { href: VISIT_HREF, label: COPY.nav.visit },

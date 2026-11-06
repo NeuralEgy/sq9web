@@ -3,25 +3,33 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { COPY } from '@/content/copy';
-import { FOUNDER } from '@/data/leadership';
+import { FOUNDER, HAS_LEADERSHIP } from '@/data/leadership';
 import { PROJECT_PATH } from '@/data/projects/aurora-palace';
 import { buildMetadata } from '@/lib/seo';
 import { ROUTES } from '@/lib/routes';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { Board } from '@/components/Board';
 import { Eyebrow } from '@/components/Eyebrow';
 import { RichText } from '@/components/RichText';
 import { WhatsAppFab } from '@/components/WhatsAppFab';
 
+// العنوان والوصف بيتغيّروا حسب اللي وصل فعلًا: لو في جواب مؤسِّس،
+// هو اللي بيحمل الصفحة؛ لو الواصل أسامي المجلس بس، الوصف بيبقى
+// عن المجلس. الاتنين بيتحسبوا وقت البيلد لأن البيانات ثابتة.
+const META = FOUNDER
+  ? { title: COPY.founder.seoTitle, description: COPY.founder.seoDescription }
+  : { title: COPY.board.seoTitle, description: COPY.board.seoDescription };
+
 export const metadata: Metadata = buildMetadata({
   path: ROUTES.leadership,
-  title: COPY.founder.seoTitle,
-  description: COPY.founder.seoDescription,
+  title: META.title,
+  description: META.description,
 });
 
 // ============================================================
-// صفحة المؤسِّس.
+// صفحة القيادة — المؤسِّس ومجلس الإدارة.
 //
 // 🔴 وهي من غير بيانات بترد 404، مش صفحة فاضية. ده مقصود:
 //    - المسار مش في الـsitemap ولا في المنيو وهو فاضي
@@ -29,21 +37,22 @@ export const metadata: Metadata = buildMetadata({
 //    - فلو حد خمّن العنوان، لازم يلاقي 404 زي أي مسار مش موجود،
 //      مش صفحة بعنوان «القيادة» وتحتها فراغ
 //
-//    أول ما src/data/leadership.ts يتملا، الصفحة بتشتغل وبتدخل
-//    المنيو والخريطة لوحدها.
+// 🔴 والشرط HAS_LEADERSHIP مش FOUNDER لوحده: الصفحة بتشتغل لو
+//    **أي** واحدة من الخانتين اتملت. يعني لو وصلت أسامي المجلس
+//    قبل جواب المؤسِّس، الصفحة بتفتح بالمجلس بس — وبالعكس.
 //
 // 🔴 ومفيش Person في البيانات المنظّمة هنا. الـschema بتاع Person
 //    بيربط اسم إنسان حقيقي بمنصب في كيان تجاري، وجوجل بيستخدمه في
-//    لوحة المعرفة. ما يتزوّدش غير لما العميل يأكد الاسم والمنصب
+//    لوحة المعرفة. ما يتزوّدش غير لما العميل يأكد الأسامي والمناصب
 //    كتابة — ولما يتزوّد، يتحط هنا مش في مكان تاني.
 // ============================================================
 export default function LeadershipPage() {
-  if (!FOUNDER) notFound();
+  if (!HAS_LEADERSHIP) notFound();
 
   return (
     <>
       <BreadcrumbJsonLd
-        pageName={`${COPY.founder.titleLead} ${COPY.founder.titleAccent}`}
+        pageName={`${COPY.board.titleLead} ${COPY.board.titleAccent}`}
         path={ROUTES.leadership}
       />
 
@@ -58,41 +67,57 @@ export default function LeadershipPage() {
 
       <main id="main">
         <section className="shell py-14 lg:py-20">
-          <Eyebrow>{COPY.founder.eyebrow}</Eyebrow>
+          <Eyebrow>{COPY.nav.leadership}</Eyebrow>
           <h1 className="mt-6 max-w-4xl font-display text-[clamp(2.8rem,8vw,6rem)] font-light leading-[1.0]">
-            {COPY.founder.titleLead}{' '}
-            <em className="italic text-sea">{COPY.founder.titleAccent}</em>
+            {COPY.board.titleLead}{' '}
+            <em className="italic text-sea">{COPY.board.titleAccent}</em>
           </h1>
+          <p className="mt-7 max-w-2xl text-xl font-light leading-relaxed text-ink-soft">
+            {COPY.board.lead}
+          </p>
         </section>
 
-        <section className="shell border-t border-hair py-14 lg:py-20">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
-            <div>
-              <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-sm">
-                <Image
-                  src={FOUNDER.photo}
-                  alt={`${FOUNDER.name}, ${FOUNDER.role} of Square9 Developments`}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 34vw, 90vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="mt-6 font-display text-2xl">{FOUNDER.name}</p>
-              <p className="mt-1 text-[12px] uppercase tracking-[0.18em] text-ink-muted">
-                {FOUNDER.role}
-              </p>
-            </div>
-
-            <div className="max-w-2xl space-y-6 text-lg font-light leading-relaxed text-ink-soft">
-              {FOUNDER.letter.map((p, i) => (
-                <p key={i} className={i === 0 ? 'text-xl text-ink' : undefined}>
-                  <RichText text={p} />
+        {/* ===== المؤسِّس — الجواب كامل، مش المقتطف بتاع الرئيسية ===== */}
+        {FOUNDER ? (
+          <section className="shell border-t border-hair py-14 lg:py-20">
+            <div className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
+              <div>
+                <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-sm">
+                  <Image
+                    src={FOUNDER.photo}
+                    alt={`${FOUNDER.name}, ${FOUNDER.role} of Square9 Developments`}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 34vw, 90vw"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="mt-6 font-display text-2xl">{FOUNDER.name}</p>
+                <p className="mt-1 text-[12px] uppercase tracking-[0.18em] text-ink-muted">
+                  {FOUNDER.role}
                 </p>
-              ))}
+              </div>
+
+              <div>
+                <h2 className="font-display text-[clamp(2rem,4vw,3rem)] font-light leading-tight">
+                  {COPY.founder.titleLead}{' '}
+                  <em className="italic text-sea">{COPY.founder.titleAccent}</em>
+                </h2>
+
+                <div className="mt-8 max-w-2xl space-y-6 text-lg font-light leading-relaxed text-ink-soft">
+                  {FOUNDER.letter.map((p, i) => (
+                    <p key={i} className={i === 0 ? 'text-xl text-ink' : undefined}>
+                      <RichText text={p} />
+                    </p>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
+
+        {/* ===== المجلس — بيرجع null لو BOARD فاضية ===== */}
+        <Board />
 
         <section className="shell border-t border-hair py-14 lg:py-20">
           <div className="flex flex-wrap gap-3">

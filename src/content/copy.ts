@@ -35,6 +35,7 @@ export const COPY = {
     faq: 'Questions',
     philosophyPage: 'Philosophy',
     buying: 'Buying',
+    sales: 'Sales',
     leadership: 'Leadership',
 
     // أقسام صفحة المشروع
@@ -169,6 +170,38 @@ export const COPY = {
       cta: 'All the questions, answered',
     },
 
+    // «فين بنبني» — نفس المسافات المنشورة على صفحة المشروع، بس هنا
+    // الحجة حجة شركة مش تفصيلة مشروع: المطوّر اختار الحتة دي بعينها.
+    //
+    // 🔴 كل رقم هنا من DISTANCES في ملف المشروع، والمكوّن بيقراها
+    //    من هناك مش من النص ده — فرقم ما يتكتبش في حتتين.
+    where: {
+      eyebrow: 'Where we build',
+      titleLead: 'One district,',
+      titleAccent: 'on purpose',
+      lead: 'Magawish, on the south side of Hurghada. Close enough that a four-hour flight ends at the door, far enough that the street outside is residential rather than a strip of bars — and that trade-off is the whole reason the land was bought here rather than on the promenade.',
+      distancesTitle: 'Published drive times',
+      note: 'Every figure here is a drive time published for Aurora Palace, not an estimate of ours. Exact coordinates are not published yet, so the map link opens the district rather than a pin we cannot stand behind.',
+      mapCta: 'Open the district in Maps',
+      guideCta: 'More about Magawish',
+    },
+
+    // «المبيعات» على الرئيسية — القنوات والمواعيد، وبيودّي على /sales.
+    //
+    // 🔴 القسم ده بيظهر دلوقتي لأنه مبني على منشور بالكامل: الرقم،
+    //    الإيميل، والمواعيد الأربعة. وفريق المبيعات (الأسامي) خانة
+    //    تانية خالص في src/data/sales.ts، وهي فاضية فما بتظهرش.
+    salesDesk: {
+      eyebrow: 'Sales',
+      titleLead: 'One desk,',
+      titleAccent: 'one project',
+      lead: 'Everything this site knows is already on it, free to read without talking to anyone. The desk is for the part that is not published — and that part is held by people, not pages.',
+      channelsTitle: 'Reach the desk',
+      slotsTitle: 'Visit times',
+      slotsNote: 'Four appointments a day at the finished show apartment. Nothing is signed and nothing is owed.',
+      cta: 'How the sales desk works',
+    },
+
     connect: {
       eyebrow: 'Talk to us',
       titleLead: 'Come and see',
@@ -192,6 +225,24 @@ export const COPY = {
     seoTitle: 'The Founder — Square9 Developments, Hurghada',
     seoDescription:
       'The person behind Square9 Developments in Hurghada, in their own words: why the company was built and what it decided to do differently.',
+  },
+
+  // ============================================================
+  // مجلس الإدارة — بيظهر بس لما BOARD في src/data/leadership.ts يتملا
+  //
+  // 🔴 مفيش هنا أي صفة ولا وصف لأي شخص. اللي هنا لافتات القسم بس،
+  //    والأسامي والمناصب كلها من ملف البيانات — عشان ما يحصلش إن
+  //    حد يوصف إنسان حقيقي بكلام مجاله النص ده.
+  // ============================================================
+  board: {
+    eyebrow: 'The board',
+    titleLead: 'The people',
+    titleAccent: 'answerable for it',
+    lead: 'A company that intends to hand over keys in 2028 should be willing to say who is responsible for that date.',
+    focusLabel: 'Responsible for',
+    seoTitle: 'Leadership — Square9 Developments, Hurghada',
+    seoDescription:
+      'Who runs Square9 Developments in Hurghada: the founder in their own words, and the board responsible for delivering Aurora Palace.',
   },
 
   // ============================================================
@@ -314,6 +365,97 @@ export const COPY = {
       'Anything that will end up in a contract should reach you in writing before you sign, not after. Every developer worth buying from expects to be asked, and the one that hesitates has told you something.',
     faqCta: 'The questions, answered',
     visitCta: 'Book a visit',
+  },
+
+  // ============================================================
+  // صفحة /sales
+  //
+  // 🔴 الصفحة دي **مش** /buying و**مش** /contact، ولازم تفضل كده:
+  //
+  //    /buying   الترتيب اللي بيحصل بيه الشرا — ست خطوات بالتسلسل
+  //    /contact  دليل القنوات — الرقم، الإيميل، العنوان، السوشيال
+  //    /sales    المكتب نفسه: هو موجود لإيه، مين بيرد، ومواعيده
+  //
+  //    التلاتة بيشاوروا على بعض بدل ما يكرّروا بعض. أي كلام يتزوّد
+  //    هنا يتشاف الأول إنه مش على الاتنين التانيين.
+  //
+  // 🔴 و«ask» تحت مقصود يكون **ليستة قصيرة** — سطر لكل حاجة. نفس
+  //    الأربعة دول مشروحين بالتفصيل في /buying جوّه خطواتهم؛ هنا
+  //    بيبقوا تشك ليست تتاخد مع الزائر للمكتب، مش شرح تاني.
+  // ============================================================
+  salesPage: {
+    eyebrow: 'Sales & reservations',
+    title: 'The sales desk,',
+    titleAccent: 'plainly',
+    intro:
+      'What the desk is for, how to reach it, when you can visit — and what it holds that this website does not.',
+    seoTitle: 'Square9 Sales Office, Hurghada — Reach the Desk, Book a Visit',
+    seoDescription:
+      'How to reach the Square9 sales desk in Magawish, Hurghada: WhatsApp, phone and email, the four daily visit times at the finished show apartment, and what the desk holds rather than the website.',
+
+    purposeTitle: 'What the desk is for',
+    purpose: [
+      'One thing, mainly: getting you inside the finished show apartment, and then answering the questions this site deliberately leaves open.',
+      'The published facts are all here already — sizes, floors, the share of the land that stays as garden, the finish standard, the contract name, the handover year. You can read every one of them without speaking to anybody. The desk exists for the part that is **not** published.',
+    ],
+
+    channelsTitle: 'Three ways in',
+    channels: {
+      whatsapp: {
+        label: 'WhatsApp',
+        note: 'The fastest. Best for booking a time, or checking a size before you book a flight.',
+      },
+      phone: {
+        label: 'Phone',
+        note: 'The same number, if you would rather talk than type.',
+      },
+      email: {
+        label: 'Email',
+        note: 'The one that leaves a record. Use it for anything you want in writing.',
+      },
+    },
+
+    visitTitle: 'The visit',
+    visitLead: 'Four appointments a day, at the show apartment in Magawish.',
+    visitBody:
+      'It is built and finished. On an off-plan purchase that makes it the only physical evidence that exists — everything else is a drawing. Nothing is signed at a visit and nothing is owed for one.',
+    visitCta: 'Book a time',
+
+    officeTitle: 'The office',
+    officeNote:
+      'Opening hours are not published; the four visit times above are the published ones. Message the desk before travelling for anything outside them.',
+    mapCta: 'Open in Maps',
+
+    askTitle: 'Take this list with you',
+    askLead:
+      'Four things the desk holds and this site does not. Each one ends up in a contract, so ask for each one on paper before you sign rather than after.',
+    ask: [
+      'The price of the exact unit you stood in — by floor and by area, not by type.',
+      'The payment schedule in full. The published part is the 10% down payment; the dates are not.',
+      'The finish schedule. “Fully finished” is a published phrase, not a specification.',
+      'The handover clause — including what applies if 2028 slips, and if you resell before the keys.',
+    ],
+    askNote: 'Where each of these falls in the order of a purchase is on the buying page.',
+
+    pendingTitle: 'What is not published about the desk',
+    pending: [
+      'No sales employee is named on this site, because none is named anywhere yet.',
+      'No reservation fee, holding period, or booking procedure is published.',
+      'No sales branch outside Magawish is published.',
+    ],
+    pendingNote:
+      'Those are absences, not policies. When Square9 publishes them they appear here; until then this page reports that there is nothing to report, rather than filling the space.',
+
+    teamTitle: 'The people on the desk',
+    teamLead: 'Who answers, and the languages they work in.',
+    languagesLabel: 'Speaks',
+    callLabel: 'Direct line',
+
+    closingTitle: 'If you do one thing',
+    closing:
+      'Book a visit and bring those four questions. An hour in a finished apartment with somebody who can answer them tells you more than any amount of reading.',
+    buyingCta: 'The six steps of a purchase',
+    faqCta: 'The questions, answered',
   },
 
   // ============================================================

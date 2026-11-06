@@ -9,6 +9,9 @@ import { Philosophy } from '@/components/Philosophy';
 import { Strengths } from '@/components/Strengths';
 import { ProjectsIndex } from '@/components/ProjectsIndex';
 import { FounderNote } from '@/components/FounderNote';
+import { Board } from '@/components/Board';
+import { Where } from '@/components/Where';
+import { SalesDesk } from '@/components/SalesDesk';
 import { Questions } from '@/components/Questions';
 import { Connect } from '@/components/Connect';
 import { Footer } from '@/components/Footer';
@@ -29,12 +32,17 @@ export const metadata: Metadata = buildMetadata({
 // بالترتيب ده:
 //
 //   مين إحنا  →  بنؤمن بإيه  →  بنقرّر إزاي  →  نقدر نوريك إيه
-//   (وإيه اللي مش نقدر)  →  بنبني إيه  →  وإيه اللي مش هنجاوبه
-//   →  اتكلم معانا
+//   (وإيه اللي مش نقدر)  →  مين وراه  →  بنبني إيه  →  فين
+//   →  مين بيرد عليك  →  وإيه اللي مش هنجاوبه  →  اتكلم معانا
 //
-// 🔴 مفيش قسم «مجلس الإدارة». مش نسيان: مفيش ولا اسم منشور ولا
-//    متسلّم من العميل، وقسم فاضي أو أسامي مخترعة أسوأ من مفيش قسم.
+// 🔴 قسمين من دول دلوقتي **مش ظاهرين خالص**: المؤسِّس والمجلس.
+//    مش نسيان — مفيش ولا اسم منشور ولا متسلّم من العميل، والقسمين
+//    بيرجّعوا null لحد ما src/data/leadership.ts يتملا. أسامي
+//    مخترعة أو «قريبًا» أسوأ بكتير من قسم مش موجود.
 //    شوف COMPANY_NOT_PUBLISHED في src/data/company.ts.
+//
+// 🔴 وقسم المبيعات (SalesDesk) ظاهر، لأنه مبني على منشور بالكامل.
+//    اللي جوّاه وفاضي هو أسامي الفريق بس — في src/data/sales.ts.
 // ============================================================
 export default function HomePage() {
   return (
@@ -55,9 +63,12 @@ export default function HomePage() {
         <Vision />
         <Philosophy />
         <Strengths />
-        {/* بيرجع null لحد ما src/data/leadership.ts يتملا */}
+        {/* الاتنين دول بيرجّعوا null لحد ما src/data/leadership.ts يتملا */}
         <FounderNote />
+        <Board />
         <ProjectsIndex />
+        <Where />
+        <SalesDesk />
         <Questions />
         <Connect />
       </main>

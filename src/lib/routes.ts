@@ -17,6 +17,7 @@ export const ROUTES = {
   philosophy: '/philosophy',
   leadership: '/leadership',
   buying: '/buying',
+  sales: '/sales',
   faq: '/faq',
   contact: '/contact',
 } as const;
@@ -34,6 +35,11 @@ export const STATIC_PATHS: ReadonlyArray<string> = [
   ROUTES.philosophy,
   ...(HAS_LEADERSHIP ? [ROUTES.leadership] : []),
   ROUTES.buying,
+  // 🔴 /sales بتدخل دايمًا، مش زي /leadership. الفرق إن محتواها
+  //    منشور بالكامل (الرقم، الإيميل، المواعيد الأربعة)، وأسامي
+  //    الفريق قسم جوّاها بيختفي لوحده وهي فاضية — الصفحة نفسها
+  //    شغالة من غيره.
+  ROUTES.sales,
   ROUTES.faq,
   ROUTES.contact,
 ];

@@ -27,7 +27,7 @@ export function Header({
   const links = navLinks(variant, base);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-hair bg-cream/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-hair bg-foam/90 backdrop-blur">
       <div className="shell flex items-center justify-between gap-4 py-4">
         <Link href="/" className="shrink-0 font-display text-2xl font-semibold tracking-[0.14em]">
           {DEVELOPER.shortName}
@@ -38,7 +38,7 @@ export function Header({
           className="hidden gap-9 text-[12px] uppercase tracking-[0.18em] text-ink-muted md:flex"
         >
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="transition hover:text-clay">
+            <a key={l.href} href={l.href} className="transition hover:text-sea">
               {l.label}
             </a>
           ))}
@@ -46,7 +46,7 @@ export function Header({
 
         <a
           href={VISIT_HREF}
-          className="shrink-0 rounded-full bg-ink px-5 py-2.5 text-[12px] uppercase tracking-[0.16em] text-cream transition hover:bg-clay sm:px-6"
+          className="shrink-0 rounded-full bg-ink px-5 py-2.5 text-[12px] uppercase tracking-[0.16em] text-foam transition hover:bg-sea sm:px-6"
         >
           {COPY.nav.visit}
         </a>

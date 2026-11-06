@@ -14,22 +14,22 @@ const WA_TEXT = 'Hello, I would like to arrange a visit with Square9';
 export function Connect() {
   return (
     <section className="shell pb-8 pt-4 lg:pb-16">
-      <div className="rounded-sm bg-ink px-7 py-16 text-cream sm:px-12 lg:py-24">
-        <p className="text-[12px] uppercase tracking-[0.26em] text-gold">
+      <div className="rounded-sm bg-ink px-7 py-16 text-foam sm:px-12 lg:py-24">
+        <p className="text-[12px] uppercase tracking-[0.26em] text-sun">
           {COPY.company.connect.eyebrow}
         </p>
         <h2 className="mt-6 max-w-2xl font-display text-[clamp(2.2rem,5vw,4rem)] font-light leading-[1.05]">
           {COPY.company.connect.titleLead}{' '}
-          <em className="italic text-gold">{COPY.company.connect.titleAccent}</em>
+          <em className="italic text-sun">{COPY.company.connect.titleAccent}</em>
         </h2>
-        <p className="mt-7 max-w-xl text-lg font-light leading-relaxed text-cream/70">
+        <p className="mt-7 max-w-xl text-lg font-light leading-relaxed text-foam/70">
           {COPY.company.connect.body}
         </p>
 
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
             href={VISIT_HREF}
-            className="rounded-full bg-gold px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] text-ink transition hover:bg-cream"
+            className="rounded-full bg-sun px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] text-ink transition hover:bg-foam"
           >
             {COPY.company.connect.ctaVisit}
           </Link>
@@ -37,7 +37,7 @@ export function Connect() {
             href={whatsappUrl(WA_TEXT)}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-cream/30 px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] transition hover:bg-cream/10"
+            className="rounded-full border border-foam/30 px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] transition hover:bg-foam/10"
           >
             {COPY.company.connect.ctaWhatsapp}
           </a>

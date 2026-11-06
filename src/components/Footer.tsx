@@ -41,7 +41,7 @@ export function Footer({
           <ul className="mt-5 space-y-2.5">
             {sections.map((s) => (
               <li key={s.href}>
-                <a href={s.href} className="text-ink-muted transition hover:text-clay">
+                <a href={s.href} className="text-ink-muted transition hover:text-sea">
                   {s.label}
                 </a>
               </li>
@@ -55,7 +55,7 @@ export function Footer({
           <ul className="mt-5 space-y-2.5">
             {GUIDE_LIST.map((g) => (
               <li key={g.slug}>
-                <Link href={`/${g.slug}`} className="text-ink-muted transition hover:text-clay">
+                <Link href={`/${g.slug}`} className="text-ink-muted transition hover:text-sea">
                   {g.navLabel}
                 </Link>
               </li>
@@ -69,7 +69,7 @@ export function Footer({
             <li>
               <a
                 href={`tel:${DEVELOPER.phoneE164}`}
-                className="text-ink-muted transition hover:text-clay"
+                className="text-ink-muted transition hover:text-sea"
               >
                 {DEVELOPER.phoneDisplay}
               </a>
@@ -77,7 +77,7 @@ export function Footer({
             <li>
               <a
                 href={`mailto:${DEVELOPER.email}`}
-                className="text-ink-muted transition hover:text-clay"
+                className="text-ink-muted transition hover:text-sea"
               >
                 {DEVELOPER.email}
               </a>
@@ -94,7 +94,7 @@ export function Footer({
                   href={DEVELOPER.social[key]}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink-muted transition hover:text-clay"
+                  className="text-ink-muted transition hover:text-sea"
                 >
                   {label}
                 </a>

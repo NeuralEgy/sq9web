@@ -21,7 +21,7 @@ export function ProjectFacts() {
   ];
 
   return (
-    <section id="project" className="scroll-mt-28 bg-sand py-24 lg:py-36">
+    <section id="project" className="scroll-mt-28 bg-shallow py-24 lg:py-36">
       <div className="shell">
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm lg:aspect-[4/5]">
@@ -58,7 +58,7 @@ export function ProjectFacts() {
             </dl>
 
             {/* شفافية عن البيع على الخريطة — بتبني ثقة بدل ما العميل يكتشفها بنفسه */}
-            <p className="mt-8 border-s-2 border-clay ps-5 leading-relaxed text-ink-soft">
+            <p className="mt-8 border-s-2 border-sea ps-5 leading-relaxed text-ink-soft">
               {COPY.project.offPlanNote}
             </p>
           </div>

@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
+import { PALETTE } from '@/lib/palette';
 import { COPY } from '@/content/copy';
 import { DEVELOPER, HEAD_OFFICE } from '@/data/company';
 
@@ -46,14 +47,14 @@ export default async function Image() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '72px 80px',
-          background: '#faf6ef',
-          color: '#1c1814',
+          background: PALETTE.foam,
+          color: PALETTE.ink,
           fontFamily: 'Cormorant',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-          <div style={{ width: 44, height: 2, background: '#a0552f', display: 'flex' }} />
-          <span style={{ fontSize: 26, letterSpacing: 8, color: '#a0552f' }}>
+          <div style={{ width: 44, height: 2, background: PALETTE.sea, display: 'flex' }} />
+          <span style={{ fontSize: 26, letterSpacing: 8, color: PALETTE.sea }}>
             {DEVELOPER.shortName} DEVELOPMENTS · {HEAD_OFFICE.city.toUpperCase()}
           </span>
         </div>
@@ -64,14 +65,14 @@ export default async function Image() {
             style={{
               fontSize: 112,
               fontStyle: 'italic',
-              color: '#a0552f',
+              color: PALETTE.sea,
               lineHeight: 1.0,
               marginTop: 2,
             }}
           >
             {COPY.company.hero.titleAccent}
           </span>
-          <span style={{ fontSize: 34, color: '#6b6055', marginTop: 28 }}>
+          <span style={{ fontSize: 34, color: PALETTE.inkMuted, marginTop: 28 }}>
             {DEVELOPER.name} — building communities in {HEAD_OFFICE.city}, {HEAD_OFFICE.region}
           </span>
         </div>
@@ -80,13 +81,13 @@ export default async function Image() {
           style={{
             display: 'flex',
             gap: 64,
-            borderTop: '1px solid rgba(28,24,20,0.15)',
+            borderTop: `1px solid ${PALETTE.hairStrong}`,
             paddingTop: 30,
           }}
         >
           {COPY.company.philosophy.pillars.map((pillar, i) => (
             <div key={pillar.title} style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 24, color: '#a0552f' }}>
+              <span style={{ fontSize: 24, color: PALETTE.sea }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               <span style={{ fontSize: 40, marginTop: 6 }}>{pillar.title}</span>

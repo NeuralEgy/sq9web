@@ -5,7 +5,7 @@ import { Eyebrow, SectionTitle } from './Eyebrow';
 
 export function Life() {
   return (
-    <section id="life" className="scroll-mt-28 bg-sand py-24 lg:py-36">
+    <section id="life" className="scroll-mt-28 bg-shallow py-24 lg:py-36">
       <div className="shell">
         <Eyebrow>{COPY.life.eyebrow}</Eyebrow>
         <SectionTitle

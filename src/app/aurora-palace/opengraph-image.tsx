@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
+import { PALETTE } from '@/lib/palette';
 import { PROJECT } from '@/data/projects/aurora-palace';
 
 // ============================================================
@@ -41,14 +42,14 @@ export default async function Image() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '72px 80px',
-          background: '#faf6ef',
-          color: '#1c1814',
+          background: PALETTE.foam,
+          color: PALETTE.ink,
           fontFamily: 'Cormorant',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-          <div style={{ width: 44, height: 2, background: '#a0552f', display: 'flex' }} />
-          <span style={{ fontSize: 26, letterSpacing: 8, color: '#a0552f' }}>
+          <div style={{ width: 44, height: 2, background: PALETTE.sea, display: 'flex' }} />
+          <span style={{ fontSize: 26, letterSpacing: 8, color: PALETTE.sea }}>
             MAGAWISH · HURGHADA · RED SEA
           </span>
         </div>
@@ -59,14 +60,14 @@ export default async function Image() {
             style={{
               fontSize: 112,
               fontStyle: 'italic',
-              color: '#a0552f',
+              color: PALETTE.sea,
               lineHeight: 1.0,
               marginTop: 2,
             }}
           >
             Palace
           </span>
-          <span style={{ fontSize: 34, color: '#6b6055', marginTop: 28 }}>
+          <span style={{ fontSize: 34, color: PALETTE.inkMuted, marginTop: 28 }}>
             {PROJECT.totalUnits} residences in Magawish, Hurghada — by Square9 Developments
           </span>
         </div>
@@ -75,7 +76,7 @@ export default async function Image() {
           style={{
             display: 'flex',
             gap: 64,
-            borderTop: '1px solid rgba(28,24,20,0.15)',
+            borderTop: `1px solid ${PALETTE.hairStrong}`,
             paddingTop: 30,
           }}
         >
@@ -100,7 +101,7 @@ function Fact({ value, label }: { value: string; label: string }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <span style={{ fontSize: 44 }}>{value}</span>
-      <span style={{ fontSize: 24, color: '#6b6055', marginTop: 8 }}>{label}</span>
+      <span style={{ fontSize: 24, color: PALETTE.inkMuted, marginTop: 8 }}>{label}</span>
     </div>
   );
 }

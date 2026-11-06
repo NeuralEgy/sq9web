@@ -27,7 +27,7 @@ const EMPTY = {
 };
 
 const CONTROL =
-  'w-full rounded-sm border border-ink/20 bg-cream px-4 py-3 text-ink placeholder:text-ink-muted/50 focus:border-clay focus:outline-none focus:ring-1 focus:ring-clay';
+  'w-full rounded-sm border border-ink/20 bg-foam px-4 py-3 text-ink placeholder:text-ink-muted/50 focus:border-sea focus:outline-none focus:ring-1 focus:ring-sea';
 
 export function VisitForm() {
   const formId = useId();
@@ -96,8 +96,8 @@ export function VisitForm() {
 
   if (status === 'done') {
     return (
-      <div className="rounded-sm border-2 border-clay bg-cream p-8">
-        <p className="font-display text-3xl font-light text-clay">{COPY.form.successTitle}</p>
+      <div className="rounded-sm border-2 border-sea bg-foam p-8">
+        <p className="font-display text-3xl font-light text-sea">{COPY.form.successTitle}</p>
         <p className="mt-4 leading-relaxed text-ink-soft">{COPY.form.successBody}</p>
         <button
           type="button"
@@ -105,7 +105,7 @@ export function VisitForm() {
             setValues(EMPTY);
             setStatus('idle');
           }}
-          className="mt-7 text-[12px] uppercase tracking-[0.16em] text-clay underline underline-offset-4"
+          className="mt-7 text-[12px] uppercase tracking-[0.16em] text-sea underline underline-offset-4"
         >
           {COPY.form.successAgain}
         </button>
@@ -114,7 +114,7 @@ export function VisitForm() {
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="rounded-sm border border-hair bg-cream p-6 sm:p-8">
+    <form noValidate onSubmit={handleSubmit} className="rounded-sm border border-hair bg-foam p-6 sm:p-8">
       <div className="space-y-4">
         <Field id={`${formId}-name`} label={COPY.form.name} error={fieldErrors.customerName} required>
           {(p) => (
@@ -223,7 +223,7 @@ export function VisitForm() {
       {serverError && (
         <p
           role="alert"
-          className="mt-5 rounded-sm border border-clay/40 bg-clay/10 px-4 py-3 text-sm text-clay"
+          className="mt-5 rounded-sm border border-sea/40 bg-sea/10 px-4 py-3 text-sm text-sea"
         >
           {COPY.form.serverErrors[serverError]}
         </p>
@@ -232,7 +232,7 @@ export function VisitForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="mt-6 w-full rounded-full bg-ink px-6 py-4 text-[12px] uppercase tracking-[0.16em] text-cream transition hover:bg-clay disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-6 w-full rounded-full bg-ink px-6 py-4 text-[12px] uppercase tracking-[0.16em] text-foam transition hover:bg-sea disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === 'sending' ? COPY.form.submitting : COPY.form.submit}
       </button>
@@ -243,7 +243,7 @@ export function VisitForm() {
           href={whatsappUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-clay underline underline-offset-4"
+          className="font-semibold text-sea underline underline-offset-4"
         >
           WhatsApp
         </a>
@@ -289,7 +289,7 @@ function Field({
       })}
 
       {error && (
-        <p id={errorId} role="alert" className="mt-1.5 text-sm text-clay">
+        <p id={errorId} role="alert" className="mt-1.5 text-sm text-sea">
           {COPY.form.errors[error]}
         </p>
       )}

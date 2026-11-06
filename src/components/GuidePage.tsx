@@ -51,7 +51,7 @@ export function GuidePage({ guide }: { guide: Guide }) {
         <article className="shell py-14 lg:py-20">
           {/* فتات الخبز المرئي — مش بس في البيانات المنظّمة */}
           <nav aria-label="Breadcrumb" className="text-sm text-ink-muted">
-            <Link href="/" className="transition hover:text-clay">
+            <Link href="/" className="transition hover:text-sea">
               {DEVELOPER.name}
             </Link>
             <span className="mx-2 text-ink-muted/50">/</span>
@@ -83,18 +83,18 @@ export function GuidePage({ guide }: { guide: Guide }) {
           </div>
 
           {/* نفس الخطوة في كل صفحة: زيارة أو واتساب */}
-          <div className="mt-16 max-w-2xl rounded-sm bg-ink px-7 py-12 text-cream sm:px-10">
-            <p className="text-[12px] uppercase tracking-[0.26em] text-gold">
+          <div className="mt-16 max-w-2xl rounded-sm bg-ink px-7 py-12 text-foam sm:px-10">
+            <p className="text-[12px] uppercase tracking-[0.26em] text-sun">
               {COPY.visit.eyebrow}
             </p>
             <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.05]">
-              {COPY.visit.titleLead} <em className="italic text-gold">{COPY.visit.titleAccent}</em>
+              {COPY.visit.titleLead} <em className="italic text-sun">{COPY.visit.titleAccent}</em>
             </h2>
-            <p className="mt-5 leading-relaxed text-cream/70">{COPY.pricing.closing}</p>
+            <p className="mt-5 leading-relaxed text-foam/70">{COPY.pricing.closing}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href={VISIT_HREF}
-                className="rounded-full bg-gold px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] text-ink transition hover:bg-cream"
+                className="rounded-full bg-sun px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] text-ink transition hover:bg-foam"
               >
                 {COPY.nav.visit}
               </Link>
@@ -102,7 +102,7 @@ export function GuidePage({ guide }: { guide: Guide }) {
                 href={whatsappUrl(waText)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-cream/30 px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] transition hover:bg-cream/10"
+                className="rounded-full border border-foam/30 px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] transition hover:bg-foam/10"
               >
                 {COPY.hero.ctaWhatsapp}
               </a>

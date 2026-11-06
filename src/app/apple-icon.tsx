@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { PALETTE } from '@/lib/palette';
 
 // أيقونة «أضف للشاشة الرئيسية» على iOS — لازم PNG، فبتتولّد هنا.
 // نفس ألوان icon.svg عشان الشكل واحد.
@@ -15,8 +16,8 @@ export default function AppleIcon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#12161f',
-          color: '#c9a24a',
+          background: PALETTE.ink,
+          color: PALETTE.sun,
           fontSize: 108,
           fontWeight: 700,
           fontFamily: 'serif',

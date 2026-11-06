@@ -44,7 +44,7 @@ export function Units() {
                 href={whatsappUrl(waText)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block border-t border-hair pt-6 transition hover:border-clay"
+                className="group block border-t border-hair pt-6 transition hover:border-sea"
               >
                 <h3 className="font-display text-[clamp(1.8rem,3vw,2.4rem)] font-light">
                   {unit.name}
@@ -53,7 +53,7 @@ export function Units() {
                   {unit.areaMinM2} – {unit.areaMaxM2} {COPY.common.sqm}
                 </p>
                 <p className="mt-3 text-ink-soft">{unit.note}</p>
-                <span className="mt-5 inline-block text-[12px] uppercase tracking-[0.16em] text-clay">
+                <span className="mt-5 inline-block text-[12px] uppercase tracking-[0.16em] text-sea">
                   {COPY.units.ask} →
                 </span>
               </a>

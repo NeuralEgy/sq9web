@@ -28,25 +28,25 @@ export function Strengths() {
         </p>
       </div>
 
-      <ol className="mt-16 grid gap-x-12 gap-y-12 sm:grid-cols-2">
+      <ol className="mt-16 grid gap-x-16 gap-y-14 sm:grid-cols-2">
         {COPY.company.strengths.items.map((item, i) => (
           <li key={item.title} className="border-t border-hair pt-6">
-            <span className="font-display text-sm text-clay">
+            <span className="font-display text-sm text-sea">
               {String(i + 1).padStart(2, '0')}
             </span>
             <h3 className="mt-2 font-display text-[clamp(1.5rem,2.4vw,2rem)] font-light leading-snug">
               {item.title}
             </h3>
-            <p className="mt-4 leading-relaxed text-ink-soft">{item.body}</p>
+            <p className="mt-4 max-w-xl leading-relaxed text-ink-soft">{item.body}</p>
           </li>
         ))}
       </ol>
 
-      <div className="mt-20 rounded-sm bg-ink px-7 py-12 text-cream sm:px-12">
-        <p className="text-[12px] uppercase tracking-[0.26em] text-gold">
+      <div className="mt-20 rounded-sm bg-ink px-7 py-12 text-foam sm:px-12">
+        <p className="text-[12px] uppercase tracking-[0.26em] text-sun">
           {COPY.company.strengths.honestyTitle}
         </p>
-        <p className="mt-6 max-w-3xl text-[clamp(1.1rem,1.9vw,1.45rem)] font-light leading-relaxed text-cream/80">
+        <p className="mt-6 max-w-3xl text-[clamp(1.1rem,1.9vw,1.45rem)] font-light leading-relaxed text-foam/80">
           {COPY.company.strengths.honesty}
         </p>
       </div>

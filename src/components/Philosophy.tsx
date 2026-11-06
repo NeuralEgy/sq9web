@@ -22,11 +22,11 @@ export function Philosophy() {
       <div className="mt-16 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
         {COPY.company.philosophy.pillars.map((pillar, i) => (
           <div key={pillar.title} className="border-t border-hair pt-5">
-            <span className="font-display text-sm text-clay">
+            <span className="font-display text-sm text-sea">
               {String(i + 1).padStart(2, '0')}
             </span>
             <h3 className="mt-2 font-display text-2xl font-light">{pillar.title}</h3>
-            <p className="mt-3 leading-relaxed text-ink-muted">{pillar.body}</p>
+            <p className="mt-3 max-w-xs leading-relaxed text-ink-muted">{pillar.body}</p>
           </div>
         ))}
       </div>

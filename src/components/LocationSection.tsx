@@ -24,7 +24,7 @@ export function LocationSection() {
               href={LOCATION.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-[12px] uppercase tracking-[0.16em] text-clay"
+              className="mt-4 inline-block text-[12px] uppercase tracking-[0.16em] text-sea"
             >
               {COPY.location.directions} →
             </a>

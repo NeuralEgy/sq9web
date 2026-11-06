@@ -14,11 +14,11 @@
   }
 
   body {
-    @apply bg-cream text-ink antialiased;
+    @apply bg-foam text-ink antialiased;
   }
 
   ::selection {
-    @apply bg-clay/20;
+    @apply bg-sea/20;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -35,14 +35,22 @@
 }
 
 @layer components {
-  /* عرض المحتوى الموحّد */
+  /* عرض المحتوى الموحّد.
+     الهامش بيكبر مع الشاشة عشان المحتوى ما يلزقش في الحافة لما
+     الشريط نفسه بقى 96rem. */
   .shell {
-    @apply mx-auto w-full max-w-shell px-6 lg:px-10;
+    @apply mx-auto w-full max-w-shell px-6 lg:px-10 xl:px-16;
   }
+
+  /* 🔴 الصور الكبيرة بتتحط **بره** .shell مش جوّاها، فما فيش
+     كلاس bleed هنا. حيلة الـ100vw المعروفة بتزوّد عرض الشريط
+     الأفقي على ويندوز (لأن 100vw بتحسب عرض سكرول بار)، والنتيجة
+     الصفحة بتتزحلق يمين وشمال. قسم بيحط الصورة في div عادي جنب
+     الـshell بيوصل لنفس الشكل من غير أي من ده. */
 
   /* العنوان الصغير فوق كل قسم */
   .eyebrow {
-    @apply text-[12px] uppercase tracking-[0.26em] text-clay;
+    @apply text-[12px] uppercase tracking-[0.26em] text-sea;
   }
 
   /* عنوان القسم — سيريف خفيف وكبير */

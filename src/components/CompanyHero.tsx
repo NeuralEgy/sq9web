@@ -15,22 +15,23 @@ const WA_TEXT = 'Hello, I would like to know more about Square9 Developments';
 //    الزائر يفهم إنها سجل الشركة — وده أسوأ.
 export function CompanyHero() {
   return (
-    <section className="shell pt-10 lg:pt-16">
-      <Eyebrow>{COPY.company.hero.eyebrow}</Eyebrow>
+    <section className="pt-10 lg:pt-16">
+      <div className="shell">
+        <Eyebrow>{COPY.company.hero.eyebrow}</Eyebrow>
 
-      <h1 className="mt-8 max-w-4xl font-display text-[clamp(3rem,9vw,7.5rem)] font-light leading-[0.95]">
+      <h1 className="mt-8 max-w-6xl font-display text-[clamp(3rem,9vw,9rem)] font-light leading-[0.94]">
         {COPY.company.hero.titleLead}{' '}
-        <em className="italic text-clay">{COPY.company.hero.titleAccent}</em>
+        <em className="italic text-sea">{COPY.company.hero.titleAccent}</em>
       </h1>
 
-      <div className="mt-10 grid gap-8 border-t border-hair pt-8 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-        <p className="max-w-xl text-xl font-light leading-relaxed text-ink-soft">
+      <div className="mt-10 grid gap-8 border-t border-hair pt-8 lg:grid-cols-[1.7fr_1fr] lg:gap-16">
+        <p className="max-w-3xl text-[clamp(1.15rem,1.6vw,1.5rem)] font-light leading-relaxed text-ink-soft">
           {COPY.company.hero.lead}
         </p>
         <div className="flex flex-wrap items-start gap-3 lg:justify-end">
           <Link
             href={PROJECT_PATH}
-            className="rounded-full bg-ink px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] text-cream transition hover:bg-clay"
+            className="rounded-full bg-ink px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] text-foam transition hover:bg-sea"
           >
             {COPY.company.hero.ctaProject}
           </Link>
@@ -38,14 +39,21 @@ export function CompanyHero() {
             href={whatsappUrl(WA_TEXT)}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-ink/25 px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] transition hover:border-clay hover:text-clay"
+            className="rounded-full border border-ink/25 px-8 py-3.5 text-[12px] uppercase tracking-[0.16em] transition hover:border-sea hover:text-sea"
           >
             {COPY.company.hero.ctaWhatsapp}
           </a>
         </div>
       </div>
 
-      <div className="relative mt-14 aspect-[16/9] w-full overflow-hidden rounded-sm lg:mt-20">
+      </div>
+
+      {/* 🔴 الصورة بره .shell عن قصد — بتمتد لحافة الشاشة. وهي
+          السبب الأساسي إن الصفحة بقت تبان أوسع، أكتر من توسيع
+          الشريط نفسه. النسبة أعرض على الديسكتوب (21:9) وأطول على
+          الموبايل (4:3)، لأن 21:9 على تليفون بيبقى شريحة رفيعة
+          مش صورة. */}
+      <div className="relative mt-14 aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:mt-20 lg:aspect-[21/9]">
         <Image
           src={IMAGES.nightExterior}
           alt="A Square9 Developments building in Magawish, Hurghada, at night"

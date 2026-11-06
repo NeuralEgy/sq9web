@@ -33,7 +33,7 @@ export default function NotFound() {
 
         <h1 className="mt-6 font-display text-[clamp(2.6rem,7vw,5rem)] font-light leading-[1.05]">
           {COPY.notFound.title}{' '}
-          <em className="italic text-clay">
+          <em className="italic text-sea">
           {COPY.notFound.titleAccent}
           </em>
         </h1>
@@ -43,7 +43,7 @@ export default function NotFound() {
         <div className="mt-12">
           <Link
             href="/"
-            className="inline-block rounded-full bg-ink px-7 py-3 text-[12px] uppercase tracking-[0.16em] text-cream transition hover:bg-clay"
+            className="inline-block rounded-full bg-ink px-7 py-3 text-[12px] uppercase tracking-[0.16em] text-foam transition hover:bg-sea"
           >
             {COPY.notFound.home}
           </Link>
@@ -58,7 +58,7 @@ export default function NotFound() {
               <li key={guide.slug}>
                 <Link
                   href={`/${guide.slug}`}
-                  className="font-display text-xl transition hover:text-clay"
+                  className="font-display text-xl transition hover:text-sea"
                 >
                   {guide.navLabel}
                 </Link>

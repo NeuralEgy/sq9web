@@ -3,7 +3,7 @@
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <p className="eyebrow flex items-center gap-3">
-      <span className="h-px w-10 bg-clay" />
+      <span className="h-px w-10 bg-sea" />
       {children}
     </p>
   );
@@ -21,7 +21,7 @@ export function SectionTitle({
 }) {
   return (
     <h2 className={`section-title ${className}`}>
-      {lead} <em className="italic text-clay">{accent}</em>
+      {lead} <em className="italic text-sea">{accent}</em>
     </h2>
   );
 }

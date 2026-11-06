@@ -9,7 +9,7 @@ import { Eyebrow, SectionTitle } from './Eyebrow';
 // يراجعها — بدل ما نسيبها تعدّي كزخرفة.
 export function Vision() {
   return (
-    <section id="vision" className="scroll-mt-24 bg-sand py-24 lg:py-36">
+    <section id="vision" className="scroll-mt-24 bg-shallow py-24 lg:py-36">
       <div className="shell grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-24">
         <div>
           <Eyebrow>{COPY.company.vision.eyebrow}</Eyebrow>
@@ -25,7 +25,7 @@ export function Vision() {
             {COPY.company.vision.published.map((p) => (
               <p
                 key={p.slice(0, 24)}
-                className="font-display text-[clamp(1.4rem,2.6vw,2rem)] font-light leading-[1.35] text-ink"
+                className="max-w-3xl font-display text-[clamp(1.4rem,2.6vw,2.4rem)] font-light leading-[1.3] text-ink"
               >
                 {p}
               </p>
@@ -36,7 +36,7 @@ export function Vision() {
             <p className="text-[12px] uppercase tracking-[0.2em] text-ink-muted">
               {COPY.company.vision.titleCost}
             </p>
-            <p className="mt-5 text-lg font-light leading-relaxed text-ink-soft">
+            <p className="mt-5 max-w-3xl text-lg font-light leading-relaxed text-ink-soft">
               {COPY.company.vision.cost}
             </p>
           </div>

@@ -29,7 +29,7 @@ export function Story() {
           <p className="pt-2">
             <Link
               href="/"
-              className="border-b border-clay/40 pb-0.5 text-base uppercase tracking-[0.14em] text-clay transition hover:border-clay"
+              className="border-b border-sea/40 pb-0.5 text-base uppercase tracking-[0.14em] text-sea transition hover:border-sea"
             >
               {COPY.story.more}
             </Link>

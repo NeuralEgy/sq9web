@@ -57,7 +57,7 @@ export function Personas() {
             </ul>
 
             {/* السطر الصادق: اللي مش معروف، ومين بيجاوب عليه */}
-            <p className="mt-8 bg-sand p-5 text-sm leading-relaxed text-ink-soft">
+            <p className="mt-8 bg-shallow p-5 text-sm leading-relaxed text-ink-soft">
               {content.caveat}
             </p>
 
@@ -65,7 +65,7 @@ export function Personas() {
               href={whatsappUrl(wa)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-block text-[12px] uppercase tracking-[0.16em] text-clay"
+              className="mt-6 inline-block text-[12px] uppercase tracking-[0.16em] text-sea"
             >
               {content.cta} →
             </a>

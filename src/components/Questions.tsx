@@ -18,7 +18,7 @@ import { Eyebrow, SectionTitle } from './Eyebrow';
 // ============================================================
 export function Questions() {
   return (
-    <section className="shell py-24 lg:py-36">
+    <section className="shell py-14 lg:py-20">
       <div className="max-w-2xl">
         <Eyebrow>{COPY.company.questions.eyebrow}</Eyebrow>
         <SectionTitle
@@ -26,7 +26,7 @@ export function Questions() {
           accent={COPY.company.questions.titleAccent}
           className="mt-6"
         />
-        <p className="mt-7 text-lg font-light leading-relaxed text-ink-soft">
+        <p className="mt-7 section-lead">
           {COPY.company.questions.lead}
         </p>
       </div>

@@ -13,7 +13,7 @@ import { Eyebrow, SectionTitle } from './Eyebrow';
 //    بيوصله السياق من أول رسالة ويقدر يرد صح.
 export function Units() {
   return (
-    <section id="residences" className="scroll-mt-28 py-24 lg:py-36">
+    <section id="residences" className="scroll-mt-28 py-14 lg:py-20">
       <div className="shell">
         <Eyebrow>{COPY.units.eyebrow}</Eyebrow>
         <SectionTitle
@@ -21,7 +21,7 @@ export function Units() {
           accent={COPY.units.titleAccent}
           className="mt-6 max-w-2xl"
         />
-        <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-ink-soft">
+        <p className="mt-6 max-w-xl section-lead">
           {COPY.units.lead}
         </p>
 

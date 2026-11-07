@@ -54,7 +54,7 @@ export function PriceAndVisit() {
             <h2 className="mt-6 font-display text-[clamp(2.4rem,5vw,4rem)] font-light leading-[1.03]">
               {COPY.visit.titleLead} <em className="italic text-sea">{COPY.visit.titleAccent}</em>
             </h2>
-            <p className="mt-6 max-w-md text-lg font-light leading-relaxed text-ink-soft">
+            <p className="mt-6 max-w-md section-lead">
               {COPY.visit.lead}
             </p>
 

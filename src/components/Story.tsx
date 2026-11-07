@@ -10,7 +10,7 @@ import { Eyebrow, SectionTitle } from './Eyebrow';
 // اللي هو بيبص عليها، ولينك يكمّل لو حابب.
 export function Story() {
   return (
-    <section className="shell py-24 lg:py-36">
+    <section className="shell py-14 lg:py-20">
       <div className="grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-24">
         <div>
           <Eyebrow>{COPY.story.eyebrow}</Eyebrow>

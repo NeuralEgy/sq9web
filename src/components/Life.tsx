@@ -5,7 +5,7 @@ import { Eyebrow, SectionTitle } from './Eyebrow';
 
 export function Life() {
   return (
-    <section id="life" className="scroll-mt-28 bg-shallow py-24 lg:py-36">
+    <section id="life" className="scroll-mt-28 bg-shallow py-16 lg:py-24">
       <div className="shell">
         <Eyebrow>{COPY.life.eyebrow}</Eyebrow>
         <SectionTitle
@@ -13,7 +13,7 @@ export function Life() {
           accent={COPY.life.titleAccent}
           className="mt-6 max-w-3xl"
         />
-        <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-ink-soft">
+        <p className="mt-6 max-w-xl section-lead">
           {COPY.life.lead}
         </p>
 

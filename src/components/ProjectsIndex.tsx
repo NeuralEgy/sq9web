@@ -25,7 +25,7 @@ export function ProjectsIndex() {
   const solo = PROJECTS.length === 1;
 
   return (
-    <section id="projects" className="scroll-mt-24 bg-shallow py-24 lg:py-36">
+    <section id="projects" className="scroll-mt-24 bg-shallow py-16 lg:py-24">
       <div className="shell">
         <div className="max-w-2xl">
           <Eyebrow>{COPY.company.projects.eyebrow}</Eyebrow>
@@ -34,7 +34,7 @@ export function ProjectsIndex() {
             accent={COPY.company.projects.titleAccent}
             className="mt-6"
           />
-          <p className="mt-7 text-lg font-light leading-relaxed text-ink-soft">
+          <p className="mt-7 section-lead">
             {COPY.company.projects.lead}
           </p>
         </div>

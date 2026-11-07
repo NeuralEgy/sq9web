@@ -21,7 +21,7 @@ export function ProjectFacts() {
   ];
 
   return (
-    <section id="project" className="scroll-mt-28 bg-shallow py-24 lg:py-36">
+    <section id="project" className="scroll-mt-28 bg-shallow py-16 lg:py-24">
       <div className="shell">
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm lg:aspect-[4/5]">
@@ -41,7 +41,7 @@ export function ProjectFacts() {
               accent={COPY.project.titleAccent}
               className="mt-6"
             />
-            <p className="mt-6 max-w-md text-lg font-light leading-relaxed text-ink-soft">
+            <p className="mt-6 max-w-md section-lead">
               {COPY.project.lead}
             </p>
 

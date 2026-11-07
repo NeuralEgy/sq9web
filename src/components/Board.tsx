@@ -25,7 +25,7 @@ export function Board() {
   if (BOARD.length === 0) return null;
 
   return (
-    <section id="board" className="shell scroll-mt-24 py-24 lg:py-36">
+    <section id="board" className="shell scroll-mt-24 py-16 lg:py-24">
       <div className="max-w-2xl">
         <Eyebrow>{COPY.board.eyebrow}</Eyebrow>
         <SectionTitle
@@ -33,7 +33,7 @@ export function Board() {
           accent={COPY.board.titleAccent}
           className="mt-6"
         />
-        <p className="mt-7 text-lg font-light leading-relaxed text-ink-soft">
+        <p className="mt-7 section-lead">
           {COPY.board.lead}
         </p>
       </div>

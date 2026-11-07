@@ -27,7 +27,7 @@ export function SalesTeam() {
         {/* عنوان عادي مش SectionTitle — ده عنوان قسم جوّه صفحة،
             مش عنوان صفحة، فمالوش جزء مائل مميّز */}
         <h2 className="section-title mt-6">{COPY.salesPage.teamTitle}</h2>
-        <p className="mt-6 text-lg font-light leading-relaxed text-ink-soft">
+        <p className="mt-6 section-lead">
           {COPY.salesPage.teamLead}
         </p>
       </div>

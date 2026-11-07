@@ -60,6 +60,14 @@
 
   /* عنوان القسم — سيريف خفيف وكبير */
   .section-title {
-    @apply font-display text-[clamp(2.2rem,5vw,3.6rem)] font-light leading-[1.08];
+    @apply font-display text-[clamp(2.2rem,5vw,4rem)] font-light leading-[1.08];
+  }
+
+  /* مقدمة القسم — السطر اللي تحت العنوان مباشرة.
+     🔴 مش لكل نص: الفقرات الطويلة بتفضل text-lg. ده للسطر الواحد
+        اللي بيمسك العنوان، عشان الفرق بينه وبين العنوان ما يبقاش
+        نطّة من 58px لـ18px. */
+  .section-lead {
+    @apply text-[clamp(1.1rem,1.45vw,1.35rem)] font-light leading-relaxed text-ink-soft;
   }
 }

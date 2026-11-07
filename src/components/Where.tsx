@@ -20,7 +20,7 @@ import { Eyebrow, SectionTitle } from './Eyebrow';
 // ============================================================
 export function Where() {
   return (
-    <section id="where" className="shell scroll-mt-24 py-24 lg:py-36">
+    <section id="where" className="shell scroll-mt-24 py-14 lg:py-20">
       <div className="grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-24">
         <div>
           <Eyebrow>{COPY.company.where.eyebrow}</Eyebrow>
@@ -47,7 +47,7 @@ export function Where() {
         </div>
 
         <div>
-          <p className="max-w-2xl text-lg font-light leading-relaxed text-ink-soft">
+          <p className="max-w-2xl section-lead">
             {COPY.company.where.lead}
           </p>
 

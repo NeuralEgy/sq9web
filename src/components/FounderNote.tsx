@@ -30,7 +30,7 @@ export function FounderNote() {
   const hasMore = FOUNDER.letter.length > excerpt.length;
 
   return (
-    <section className="shell py-24 lg:py-36">
+    <section className="shell py-14 lg:py-20">
       <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
         <div>
           <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-sm">

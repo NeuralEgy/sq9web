@@ -29,14 +29,14 @@ export function Personas() {
   ];
 
   return (
-    <section className="shell py-24 lg:py-36">
+    <section className="shell py-16 lg:py-24">
       <Eyebrow>{COPY.personas.eyebrow}</Eyebrow>
       <SectionTitle
         lead={COPY.personas.titleLead}
         accent={COPY.personas.titleAccent}
         className="mt-6 max-w-3xl"
       />
-      <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-ink-soft">
+      <p className="mt-6 max-w-xl section-lead">
         {COPY.personas.lead}
       </p>
 

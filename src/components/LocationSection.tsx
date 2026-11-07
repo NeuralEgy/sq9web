@@ -4,7 +4,7 @@ import { Eyebrow, SectionTitle } from './Eyebrow';
 
 export function LocationSection() {
   return (
-    <section id="location" className="scroll-mt-28 py-24 lg:py-36">
+    <section id="location" className="scroll-mt-28 py-14 lg:py-20">
       <div className="shell">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-24">
           <div>
@@ -14,7 +14,7 @@ export function LocationSection() {
               accent={COPY.location.titleAccent}
               className="mt-6"
             />
-            <p className="mt-6 max-w-md text-lg font-light leading-relaxed text-ink-soft">
+            <p className="mt-6 max-w-md section-lead">
               {COPY.location.lead}
             </p>
 

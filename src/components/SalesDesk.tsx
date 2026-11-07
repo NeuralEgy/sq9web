@@ -24,7 +24,7 @@ import { SalesChannels } from './SalesChannels';
 // ============================================================
 export function SalesDesk() {
   return (
-    <section id="sales" className="scroll-mt-24 bg-shallow py-24 lg:py-36">
+    <section id="sales" className="scroll-mt-24 bg-shallow py-16 lg:py-24">
       <div className="shell">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
           <div>
@@ -34,7 +34,7 @@ export function SalesDesk() {
               accent={COPY.company.salesDesk.titleAccent}
               className="mt-6"
             />
-            <p className="mt-7 max-w-md text-lg font-light leading-relaxed text-ink-soft">
+            <p className="mt-7 max-w-md section-lead">
               {COPY.company.salesDesk.lead}
             </p>
 

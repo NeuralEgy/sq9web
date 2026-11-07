@@ -25,10 +25,10 @@ export function Units() {
           {COPY.units.lead}
         </p>
 
-        <div className="relative mt-12 aspect-[21/9] w-full overflow-hidden rounded-sm">
+        <div className="relative mt-12 aspect-[16/9] w-full overflow-hidden rounded-sm">
           <Image
             src={IMAGES.nightExterior}
-            alt={`${PROJECT.name} at night`}
+            alt={`Render of ${PROJECT.name} at night`}
             fill
             sizes="100vw"
             className="object-cover"

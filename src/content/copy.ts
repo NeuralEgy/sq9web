@@ -556,6 +556,9 @@ export const COPY = {
   // صفحة المشروع — /aurora-palace
   // ============================================================
   hero: {
+    // 🔴 أول صورة في الصفحة، ومكتوب تحتها إنها رندر. نفس اللي
+    //    بيحصل على الرئيسية — الزائر يعرف من أول شاشة.
+    imageNote: 'A render of Aurora Palace at sunset. Not a photograph — the building delivers in 2028.',
     // 🔴 العنوان هنا بقى اسم المشروع. الصفحة دي صفحة المشروع، فالـH1
     //    بتاعها لازم يكون اسمه — و«Made to Live Together» شيلة الشركة
     //    فنزلت على الرئيسية.
@@ -616,6 +619,10 @@ export const COPY = {
     titleLead: 'Forty per cent of the ground is',
     titleAccent: 'garden and water',
     lead: 'Four pools, a restaurant, a gym, and a single gated entrance.',
+    // 🔴 القسم ده أخطر قسم في الصفحة: صور ناس في مياه وشمس. لو
+    //    حد هيفتكر صورة إنها تصوير لحاجة قايمة، هيفتكرها هنا.
+    renderNote:
+      'Every image on this page is a render. The water, the planting and the light in them are drawings of what is being built, not photographs of it. The one thing that can be photographed today is the show apartment — finished, furnished and open to visit.',
   },
 
   location: {

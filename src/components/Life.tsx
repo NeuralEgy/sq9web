@@ -20,10 +20,10 @@ export function Life() {
         {/* شبكة غير متماثلة — صورة كبيرة وصورتين أصغر، شكل مجلة
             مش كروت متساوية. ده اللي بيخلّي الصفحة تبان مصمّمة. */}
         <div className="mt-14 grid gap-5 lg:grid-cols-3">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-sm lg:col-span-2 lg:aspect-[16/10]">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-sm lg:col-span-2">
             <Image
               src={IMAGES.aerialPool}
-              alt="Aerial view of the pools"
+              alt={`Render of the pools at ${PROJECT.name}, seen from above`}
               fill
               sizes="(max-width: 1024px) 100vw, 66vw"
               className="object-cover"
@@ -31,10 +31,10 @@ export function Life() {
           </div>
           <div className="grid gap-5">
             {[
-              [IMAGES.kidsPool, "The children's pool"],
-              [IMAGES.dayPool, 'The main pool'],
+              [IMAGES.kidsPool, "Render of the children's pool"],
+              [IMAGES.dayPool, 'Render of the main pool'],
             ].map(([src, alt]) => (
-              <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-sm">
+              <div key={src} className="relative aspect-[16/9] overflow-hidden rounded-sm">
                 <Image
                   src={src}
                   alt={alt}
@@ -56,10 +56,17 @@ export function Life() {
           ))}
         </ul>
 
-        <div className="relative mt-14 aspect-[21/9] w-full overflow-hidden rounded-sm">
+        {/* 🔴 السطر ده مش حاشية قانونية. القسم ده فيه ناس في
+            مياه وشمس، وهو أكتر مكان ممكن حد يفتكر فيه إن الصورة
+            تصوير لحاجة قايمة. */}
+        <p className="mt-12 max-w-3xl border-s-2 border-sea ps-5 leading-relaxed text-ink-soft">
+          {COPY.life.renderNote}
+        </p>
+
+        <div className="relative mt-12 aspect-[16/9] w-full overflow-hidden rounded-sm">
           <Image
             src={IMAGES.nightReading}
-            alt={`An evening at ${PROJECT.name}`}
+            alt={`Render of an evening at ${PROJECT.name}`}
             fill
             sizes="100vw"
             className="object-cover"

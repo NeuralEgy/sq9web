@@ -50,18 +50,25 @@ export function Hero() {
 
       </div>
 
-      {/* الصورة بره .shell — بتمتد لحافة الشاشة. شوف التعليق في
-          CompanyHero.tsx لسبب النسب المختلفة. */}
-      <div className="relative mt-14 aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:mt-20 lg:aspect-[21/9]">
-        <Image
-          src={IMAGES.sunsetPool}
-          alt={`${PROJECT.name} at sunset, Magawish, Hurghada`}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
+      {/* الصورة بره .shell — بتمتد لحافة الشاشة.
+          🔴 والنسبة 16:9 زي الملف، يعني صفر قص. كانت 21:9 وكانت
+             بتشيل ربع الصورة من فوق — وفي رندر معماري اللي بيتشال
+             من فوق هو المبنى. */}
+      <figure className="mt-14 lg:mt-20">
+        <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9]">
+          <Image
+            src={IMAGES.sunsetPool}
+            alt={`Render of ${PROJECT.name} at sunset, Magawish, Hurghada`}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+        <figcaption className="shell mt-4 text-[13px] leading-relaxed text-ink-muted">
+          {COPY.hero.imageNote}
+        </figcaption>
+      </figure>
 
       <div className="shell">
         <dl className="mt-10 grid grid-cols-2 gap-y-8 border-b border-hair pb-12 lg:grid-cols-4">

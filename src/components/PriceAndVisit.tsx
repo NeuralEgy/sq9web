@@ -58,10 +58,10 @@ export function PriceAndVisit() {
               {COPY.visit.lead}
             </p>
 
-            <div className="relative mt-10 aspect-[5/4] overflow-hidden rounded-sm">
+            <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-sm">
               <Image
                 src={IMAGES.familyNight}
-                alt="An evening at Aurora Palace"
+                alt="Render of an evening at Aurora Palace"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

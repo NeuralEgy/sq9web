@@ -85,6 +85,9 @@ export default function ContactPage() {
               >
                 {DEVELOPER.phoneDisplay}
               </a>
+              <p className="mt-3 leading-relaxed text-ink-muted">
+                {COPY.contactPage.whatsappNote}
+              </p>
             </Item>
 
             <Item label={COPY.contactPage.labels.email}>

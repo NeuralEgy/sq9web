@@ -400,10 +400,15 @@ export const COPY = {
     ],
 
     channelsTitle: 'Three ways in',
+    // 🔴 الإفصاح ده منشور بقرار العميل (٧ نوفمبر ٢٠٢٦). لو المساعد
+    //    الآلي اتوقف يومًا، السطر ده يتشال — إفصاح عن حاجة مش
+    //    موجودة غلط زي إخفاء حاجة موجودة.
+    channelsNote:
+      'The WhatsApp number is answered first by an automated assistant. We say so plainly, because you should know whether you are writing to a person. Neither the phone line nor the email inbox is automated.',
     channels: {
       whatsapp: {
         label: 'WhatsApp',
-        note: 'The fastest. Best for booking a time, or checking a size before you book a flight.',
+        note: 'The fastest, and answered first by an automated assistant rather than a person. It can book you a time and answer anything published on this site; for anything beyond that, use the phone or the inbox.',
       },
       phone: {
         label: 'Phone',
@@ -495,6 +500,9 @@ export const COPY = {
       slots: 'Show apartment',
       follow: 'Follow',
     },
+    // نفس الإفصاح بتاع /sales، لكن بسطر واحد — الصفحة دي دليل قنوات
+    // مش شرح، فالتفصيل سايب لصفحة المبيعات.
+    whatsappNote: 'Answered first by an automated assistant, not a person.',
     slotsNote:
       'Four appointment times a day at the Aurora Palace show apartment, with no obligation.',
     bookCta: 'Book a visit',

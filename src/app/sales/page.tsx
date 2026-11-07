@@ -96,6 +96,12 @@ export default function SalesPage() {
           <h2 className="font-display text-[clamp(2rem,4vw,3rem)] font-light leading-tight">
             {COPY.salesPage.channelsTitle}
           </h2>
+          {/* 🔴 الإفصاح جوّه القسم نفسه، فوق القنوات — عشان يتقرا
+              قبل ما الزائر يدوس على الواتساب، مش بعده */}
+          <p className="mt-7 max-w-2xl text-lg font-light leading-relaxed text-ink-soft">
+            {COPY.salesPage.channelsNote}
+          </p>
+
           <div className="mt-12">
             <SalesChannels withNotes />
           </div>

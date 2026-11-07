@@ -79,9 +79,22 @@ export const SALES_NOT_PUBLISHED = {
   commission: 'No brokerage or commission arrangement is published',
   languages: 'Which languages the desk speaks is not published',
   branches: 'No sales branch outside Magawish is published',
-  // 🔴 الواتساب بيرد عليه مساعد آلي (square9Agent). ده حقيقة، بس
-  //    نشرها على الصفحة قرار العميل مش قرارنا — في بلاد كتير
-  //    الإفصاح ده مطلوب قانونًا. لحد ما العميل يقرر، الصفحة
-  //    بتقول «الأسرع» وما بتقولش مين بيرد.
-  whatsappAutomation: 'Whether WhatsApp is answered by an assistant is a disclosure the client must decide',
 } as const;
+
+// ============================================================
+// 🔴 الواتساب بيرد عليه مساعد آلي (square9Agent) — ومنشور
+//
+// كان في الجرد فوق كـ«قرار العميل». العميل قرر ينشره في ٧ نوفمبر
+// ٢٠٢٦، فطلع من الجرد ونزل على صفحتين:
+//
+//   COPY.salesPage.channelsNote        سطر ظاهر فوق القنوات على /sales
+//   COPY.salesPage.channels.whatsapp   نص القناة نفسها
+//   COPY.contactPage.whatsappNote      سطر واحد على /contact
+//
+// 🔴 ولو المساعد اتوقف أو بقى بني آدم بيرد، التلات نصوص دول
+//    يتشالوا في نفس اللحظة. إفصاح عن أتمتة مش موجودة غلط زي
+//    إخفاء أتمتة موجودة.
+//
+// 🔴 والتليفون والإيميل مش مؤتمتين، وده مكتوب في channelsNote.
+//    لو ده اتغيّر يومًا، السطر ده بيبقى كلام غلط على صفحة عامة.
+// ============================================================

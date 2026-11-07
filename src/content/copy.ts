@@ -61,6 +61,7 @@ export const COPY = {
   // ============================================================
   company: {
     hero: {
+      imageNote: 'A render of Aurora Palace, Magawish. Not a photograph — the building delivers in 2028.',
       eyebrow: 'Square9 Developments · Hurghada, Red Sea',
       titleLead: 'Made to live',
       titleAccent: 'together',
@@ -175,6 +176,44 @@ export const COPY = {
     //
     // 🔴 كل رقم هنا من DISTANCES في ملف المشروع، والمكوّن بيقراها
     //    من هناك مش من النص ده — فرقم ما يتكتبش في حتتين.
+    // ============================================================
+    // شريط الساعات التلاتة — أول حتة بصرية كبيرة على الرئيسية.
+    //
+    // 🔴 الفكرة طلعت من الصور نفسها: التمن رندرات كلهم نفس الفناء
+    //    من نفس الزاوية تقريبًا، في ساعات مختلفة. معرض من ست صور
+    //    كان هيبان تكرار. التلاتة بترتيب الساعة بتبقى حجّة.
+    //
+    // 🔴 والحجّة دي مكتوبة أصلًا في فلسفة الموقع: «الرندر بيتعمل في
+    //    ساعة الغروب، ومحدش بيعيش في ساعة الغروب». الشريط ده بيوريها
+    //    بدل ما يقولها — نفس المكان الساعة ١٢ والغروب وبالليل.
+    //
+    // 🔴 وكل صورة مكتوب إنها رندر. ده مش تحفّظ قانوني — ده الفرق
+    //    بين موقع بيعرض وموقع بيوهم.
+    // ============================================================
+    hours: {
+      eyebrow: 'What has been drawn',
+      titleLead: 'The same courtyard,',
+      titleAccent: 'at three hours',
+      lead: 'Every image here is a render of Aurora Palace, not a photograph. The project delivers in 2028; what is built today is the show apartment. A render is almost always made at golden hour, so this page shows golden hour and the two hours on either side of it.',
+      shots: {
+        day: {
+          label: 'Midday',
+          note: 'The courtyard and the main pool, between the two wings.',
+        },
+        sunset: {
+          label: 'Golden hour',
+          note: 'The hour every developer photographs. It lasts about forty minutes a day.',
+        },
+        night: {
+          label: 'After dark',
+          note: 'The same courtyard lit. Lighting is the easiest thing to flatter in a render and one of the harder things to build.',
+        },
+      },
+      note: 'What is not a render is the show apartment: built, finished, and standing in Magawish today. That is the reason the only thing this site ever asks you to do is go and look at it.',
+      cta: 'Book a visit',
+      projectCta: 'See the project',
+    },
+
     where: {
       eyebrow: 'Where we build',
       titleLead: 'One district,',

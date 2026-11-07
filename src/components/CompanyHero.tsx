@@ -50,19 +50,30 @@ export function CompanyHero() {
 
       {/* 🔴 الصورة بره .shell عن قصد — بتمتد لحافة الشاشة. وهي
           السبب الأساسي إن الصفحة بقت تبان أوسع، أكتر من توسيع
-          الشريط نفسه. النسبة أعرض على الديسكتوب (21:9) وأطول على
-          الموبايل (4:3)، لأن 21:9 على تليفون بيبقى شريحة رفيعة
-          مش صورة. */}
-      <div className="relative mt-14 aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:mt-20 lg:aspect-[21/9]">
-        <Image
-          src={IMAGES.nightExterior}
-          alt="A Square9 Developments building in Magawish, Hurghada, at night"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
+          الشريط نفسه.
+
+          🔴 والنسبة 16:9 زي الملف الأصلي بالظبط، يعني مفيش قص.
+             كانت 21:9 وكانت بتقص ربع الصورة من فوق — والمبنى نفسه
+             كان بيتشال وما يفضلش غير حمام السباحة. رندر معماري
+             الموضوع بتاعه الواجهة، فقصّه بيلغي سبب وجوده. */}
+      <figure className="mt-14 lg:mt-20">
+        <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9]">
+          <Image
+            src={IMAGES.nightExterior}
+            alt="Render of Aurora Palace by Square9 Developments in Magawish, Hurghada, at night"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+
+        {/* 🔴 أول صورة في الموقع، ومكتوب تحتها إنها رندر. الزائر
+            لازم يعرف ده من أول شاشة، مش بعد ما يعدّي نص الصفحة. */}
+        <figcaption className="shell mt-4 text-[13px] leading-relaxed text-ink-muted">
+          {COPY.company.hero.imageNote}
+        </figcaption>
+      </figure>
     </section>
   );
 }

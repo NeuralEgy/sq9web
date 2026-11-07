@@ -10,6 +10,7 @@ import { Strengths } from '@/components/Strengths';
 import { ProjectsIndex } from '@/components/ProjectsIndex';
 import { FounderNote } from '@/components/FounderNote';
 import { Board } from '@/components/Board';
+import { Hours } from '@/components/Hours';
 import { Where } from '@/components/Where';
 import { SalesDesk } from '@/components/SalesDesk';
 import { Questions } from '@/components/Questions';
@@ -67,6 +68,8 @@ export default function HomePage() {
         <FounderNote />
         <Board />
         <ProjectsIndex />
+        {/* الصور بتيجي بعد ما المشروع اتعرّف، مش قبله */}
+        <Hours />
         <Where />
         <SalesDesk />
         <Questions />
